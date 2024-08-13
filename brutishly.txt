@@ -1,0 +1,1511 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="brutishly">
+    <meta name="author" content="CCP Programmers">
+    <meta name="robots" content="noindex, nofollow">
+    <meta name="googlebot" content="noindex">
+        <title>brutishly</title>
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin/><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"/>    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin/><link rel="dns-prefetch" href="https://cdnjs.cloudflare.com"/>    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" crossorigin="anonymous">        <script type="text/javascript">window.csrf = 'd20949270ea19f859bcbb03a24e326bf6dc7430c76a993f658f5f5976a938bcd';</script>
+    <style>
+        html { -moz-osx-font-smoothing: grayscale; -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; height: 100%; scroll-behavior: smooth;}
+        *,*::before,*::after { box-sizing: border-box;}
+        body { font-size:15px; color:#222;background:#F7F7F7; }
+        body.navbar-fixed { margin-top:55px; }
+        a, a:hover, a:visited, a:focus { text-decoration:none !important; }
+        .filename, td, th { white-space:nowrap  }
+        .navbar-brand { font-weight:bold; }
+        .nav-item.avatar a { cursor:pointer;text-transform:capitalize; }
+        .nav-item.avatar a > i { font-size:15px; }
+        .nav-item.avatar .dropdown-menu a { font-size:13px; }
+        #search-addon { font-size:12px;border-right-width:0; }
+        .brl-0 { background:transparent;border-left:0; border-top-left-radius: 0; border-bottom-left-radius: 0; }
+        .brr-0 { border-top-right-radius: 0; border-bottom-right-radius: 0; }
+        .bread-crumb { color:#cccccc;font-style:normal; }
+        #main-table { transition: transform .25s cubic-bezier(0.4, 0.5, 0, 1),width 0s .25s;}
+        #main-table .filename a { color:#222222; }
+        .table td, .table th { vertical-align:middle !important; }
+        .table .custom-checkbox-td .custom-control.custom-checkbox, .table .custom-checkbox-header .custom-control.custom-checkbox { min-width:18px; display: flex;align-items: center; justify-content: center; }
+        .table-sm td, .table-sm th { padding:.4rem; }
+        .table-bordered td, .table-bordered th { border:1px solid #f1f1f1; }
+        .hidden { display:none  }
+        pre.with-hljs { padding:0; overflow: hidden;  }
+        pre.with-hljs code { margin:0;border:0;overflow:scroll;  }
+        code.maxheight, pre.maxheight { max-height:512px  }
+        .fa.fa-caret-right { font-size:1.2em;margin:0 4px;vertical-align:middle;color:#ececec  }
+        .fa.fa-home { font-size:1.3em;vertical-align:bottom  }
+        .path { margin-bottom:10px  }
+        form.dropzone { min-height:200px;border:2px dashed #007bff;line-height:6rem; }
+        .right { text-align:right  }
+        .center, .close, .login-form, .preview-img-container { text-align:center  }
+        .message { padding:4px 7px;border:1px solid #ddd;background-color:#fff  }
+        .message.ok { border-color:green;color:green  }
+        .message.error { border-color:red;color:red  }
+        .message.alert { border-color:orange;color:orange  }
+        .preview-img { max-width:100%;max-height:80vh;background:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAIAAACQkWg2AAAAKklEQVR42mL5//8/Azbw+PFjrOJMDCSCUQ3EABZc4S0rKzsaSvTTABBgAMyfCMsY4B9iAAAAAElFTkSuQmCC);cursor:zoom-in }
+        input#preview-img-zoomCheck[type=checkbox] { display:none }
+        input#preview-img-zoomCheck[type=checkbox]:checked ~ label > img { max-width:none;max-height:none;cursor:zoom-out }
+        .inline-actions > a > i { font-size:1em;margin-left:5px;background:#3785c1;color:#fff;padding:3px 4px;border-radius:3px; }
+        .preview-video { position:relative;max-width:100%;height:0;padding-bottom:62.5%;margin-bottom:10px  }
+        .preview-video video { position:absolute;width:100%;height:100%;left:0;top:0;background:#000  }
+        .compact-table { border:0;width:auto  }
+        .compact-table td, .compact-table th { width:100px;border:0;text-align:center  }
+        .compact-table tr:hover td { background-color:#fff  }
+        .filename { max-width:420px;overflow:hidden;text-overflow:ellipsis  }
+        .break-word { word-wrap:break-word;margin-left:30px  }
+        .break-word.float-left a { color:#7d7d7d  }
+        .break-word + .float-right { padding-right:30px;position:relative  }
+        .break-word + .float-right > a { color:#7d7d7d;font-size:1.2em;margin-right:4px  }
+        #editor { position:absolute;right:15px;top:100px;bottom:15px;left:15px  }
+        @media (max-width:481px) {
+            #editor { top:150px; }
+        }
+        #normal-editor { border-radius:3px;border-width:2px;padding:10px;outline:none; }
+        .btn-2 { padding:4px 10px;font-size:small; }
+        li.file:before,li.folder:before { font:normal normal normal 14px/1 FontAwesome;content:"\f016";margin-right:5px }
+        li.folder:before { content:"\f114" }
+        i.fa.fa-folder-o { color:#0157b3 }
+        i.fa.fa-picture-o { color:#26b99a }
+        i.fa.fa-file-archive-o { color:#da7d7d }
+        .btn-2 i.fa.fa-file-archive-o { color:inherit }
+        i.fa.fa-css3 { color:#f36fa0 }
+        i.fa.fa-file-code-o { color:#007bff }
+        i.fa.fa-code { color:#cc4b4c }
+        i.fa.fa-file-text-o { color:#0096e6 }
+        i.fa.fa-html5 { color:#d75e72 }
+        i.fa.fa-file-excel-o { color:#09c55d }
+        i.fa.fa-file-powerpoint-o { color:#f6712e }
+        i.go-back { font-size:1.2em;color:#007bff; }
+        .main-nav { padding:0.2rem 1rem;box-shadow:0 4px 5px 0 rgba(0, 0, 0, .14), 0 1px 10px 0 rgba(0, 0, 0, .12), 0 2px 4px -1px rgba(0, 0, 0, .2)  }
+        .dataTables_filter { display:none; }
+        table.dataTable thead .sorting { cursor:pointer;background-repeat:no-repeat;background-position:center right;background-image:url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABMAAAATCAQAAADYWf5HAAAAkElEQVQoz7XQMQ5AQBCF4dWQSJxC5wwax1Cq1e7BAdxD5SL+Tq/QCM1oNiJidwox0355mXnG/DrEtIQ6azioNZQxI0ykPhTQIwhCR+BmBYtlK7kLJYwWCcJA9M4qdrZrd8pPjZWPtOqdRQy320YSV17OatFC4euts6z39GYMKRPCTKY9UnPQ6P+GtMRfGtPnBCiqhAeJPmkqAAAAAElFTkSuQmCC'); }
+        table.dataTable thead .sorting_asc { cursor:pointer;background-repeat:no-repeat;background-position:center right;background-image:url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABMAAAATCAYAAAByUDbMAAAAZ0lEQVQ4y2NgGLKgquEuFxBPAGI2ahhWCsS/gDibUoO0gPgxEP8H4ttArEyuQYxAPBdqEAxPBImTY5gjEL9DM+wTENuQahAvEO9DMwiGdwAxOymGJQLxTyD+jgWDxCMZRsEoGAVoAADeemwtPcZI2wAAAABJRU5ErkJggg=='); }
+        table.dataTable thead .sorting_desc { cursor:pointer;background-repeat:no-repeat;background-position:center right;background-image:url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABMAAAATCAYAAAByUDbMAAAAZUlEQVQ4y2NgGAWjYBSggaqGu5FA/BOIv2PBIPFEUgxjB+IdQPwfC94HxLykus4GiD+hGfQOiB3J8SojEE9EM2wuSJzcsFMG4ttQgx4DsRalkZENxL+AuJQaMcsGxBOAmGvopk8AVz1sLZgg0bsAAAAASUVORK5CYII='); }
+        table.dataTable thead tr:first-child th.custom-checkbox-header:first-child { background-image:none; }
+        .footer-action li { margin-bottom:10px; }
+        .app-v-title { font-size:24px;font-weight:300;letter-spacing:-.5px;text-transform:uppercase; }
+        hr.custom-hr { border-top:1px dashed #8c8b8b;border-bottom:1px dashed #fff; }
+        #snackbar { visibility:hidden;min-width:250px;margin-left:-125px;background-color:#333;color:#fff;text-align:center;border-radius:2px;padding:16px;position:fixed;z-index:1;left:50%;bottom:30px;font-size:17px; }
+        #snackbar.show { visibility:visible;-webkit-animation:fadein 0.5s, fadeout 0.5s 2.5s;animation:fadein 0.5s, fadeout 0.5s 2.5s; }
+        @-webkit-keyframes fadein { from { bottom:0;opacity:0; }
+        to { bottom:30px;opacity:1; }
+        }
+        @keyframes fadein { from { bottom:0;opacity:0; }
+        to { bottom:30px;opacity:1; }
+        }
+        @-webkit-keyframes fadeout { from { bottom:30px;opacity:1; }
+        to { bottom:0;opacity:0; }
+        }
+        @keyframes fadeout { from { bottom:30px;opacity:1; }
+        to { bottom:0;opacity:0; }
+        }
+        #main-table span.badge { border-bottom:2px solid #f8f9fa }
+        #main-table span.badge:nth-child(1) { border-color:#df4227 }
+        #main-table span.badge:nth-child(2) { border-color:#f8b600 }
+        #main-table span.badge:nth-child(3) { border-color:#00bd60 }
+        #main-table span.badge:nth-child(4) { border-color:#4581ff }
+        #main-table span.badge:nth-child(5) { border-color:#ac68fc }
+        #main-table span.badge:nth-child(6) { border-color:#45c3d2 }
+        @media only screen and (min-device-width:768px) and (max-device-width:1024px) and (orientation:landscape) and (-webkit-min-device-pixel-ratio:2) { .navbar-collapse .col-xs-6 { padding:0; }
+        }
+        .btn.active.focus,.btn.active:focus,.btn.focus,.btn.focus:active,.btn:active:focus,.btn:focus { outline:0!important;outline-offset:0!important;background-image:none!important;-webkit-box-shadow:none!important;box-shadow:none!important }
+        .lds-facebook { display:none;position:relative;width:64px;height:64px }
+        .lds-facebook div,.lds-facebook.show-me { display:inline-block }
+        .lds-facebook div { position:absolute;left:6px;width:13px;background:#007bff;animation:lds-facebook 1.2s cubic-bezier(0,.5,.5,1) infinite }
+        .lds-facebook div:nth-child(1) { left:6px;animation-delay:-.24s }
+        .lds-facebook div:nth-child(2) { left:26px;animation-delay:-.12s }
+        .lds-facebook div:nth-child(3) { left:45px;animation-delay:0s }
+        @keyframes lds-facebook { 0% { top:6px;height:51px }
+        100%,50% { top:19px;height:26px }
+        }
+        ul#search-wrapper { padding-left: 0;border: 1px solid #ecececcc; } ul#search-wrapper li { list-style: none; padding: 5px;border-bottom: 1px solid #ecececcc; }
+        ul#search-wrapper li:nth-child(odd){ background: #f9f9f9cc;}
+        .c-preview-img { max-width: 300px; }
+        .border-radius-0 { border-radius: 0; }
+        .float-right { float: right; }
+        .table-hover>tbody>tr:hover>td:first-child { border-left: 1px solid #1b77fd; }
+        #main-table tr.even { background-color: #F8F9Fa; }
+        .filename>a>i {margin-right: 3px;}
+    </style>
+    </head>
+<body class=" navbar-fixed">
+<div id="wrapper" class="container-fluid">
+    <!-- New Item creation -->
+    <div class="modal fade" id="createNewItem" tabindex="-1" role="dialog" data-bs-backdrop="static" data-bs-keyboard="false" aria-labelledby="newItemModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <form class="modal-content " method="post">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="newItemModalLabel"><i class="fa fa-plus-square fa-fw"></i>Create New Item</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p><label for="newfile">Item Type </label></p>
+                    <div class="form-check form-check-inline">
+                      <input class="form-check-input" type="radio" name="newfile" id="customRadioInline1" name="newfile" value="file">
+                      <label class="form-check-label" for="customRadioInline1">File</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                      <input class="form-check-input" type="radio" name="newfile" id="customRadioInline2" value="folder" checked>
+                      <label class="form-check-label" for="customRadioInline2">Folder</label>
+                    </div>
+
+                    <p class="mt-3"><label for="newfilename">Item Name </label></p>
+                    <input type="text" name="newfilename" id="newfilename" value="" class="form-control" placeholder="Enter here..." required>
+                </div>
+                <div class="modal-footer">
+                    <input type="hidden" name="token" value="d20949270ea19f859bcbb03a24e326bf6dc7430c76a993f658f5f5976a938bcd">
+                    <button type="button" class="btn btn-outline-primary" data-bs-dismiss="modal"><i class="fa fa-times-circle"></i> Cancel</button>
+                    <button type="submit" class="btn btn-success"><i class="fa fa-check-circle"></i> Create Now</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Advance Search Modal -->
+    <div class="modal fade" id="searchModal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content ">
+          <div class="modal-header">
+            <h5 class="modal-title col-10" id="searchModalLabel">
+                <div class="input-group mb-3">
+                  <input type="text" class="form-control" placeholder="Search a files" aria-label="Search" aria-describedby="search-addon3" id="advanced-search" autofocus required>
+                  <span class="input-group-text" id="search-addon3"><i class="fa fa-search"></i></span>
+                </div>
+            </h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <form action="" method="post">
+                <div class="lds-facebook"><div></div><div></div><div></div></div>
+                <ul id="search-wrapper">
+                    <p class="m-2">Search file in folder and subfolders...</p>
+                </ul>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!--Rename Modal -->
+    <div class="modal modal-alert" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" role="dialog" id="renameDailog">
+      <div class="modal-dialog" role="document">
+        <form class="modal-content rounded-3 shadow " method="post" autocomplete="off">
+          <div class="modal-body p-4 text-center">
+            <h5 class="mb-3">Are you sure want to rename?</h5>
+            <p class="mb-1">
+                <input type="text" name="rename_to" id="js-rename-to" class="form-control" placeholder="Enter new file name" required>
+                <input type="hidden" name="token" value="d20949270ea19f859bcbb03a24e326bf6dc7430c76a993f658f5f5976a938bcd">
+                <input type="hidden" name="rename_from" id="js-rename-from">
+            </p>
+          </div>
+          <div class="modal-footer flex-nowrap p-0">
+            <button type="button" class="btn btn-lg btn-link fs-6 text-decoration-none col-6 m-0 rounded-0 border-end" data-bs-dismiss="modal">Cancel</button>
+            <button type="submit" class="btn btn-lg btn-link fs-6 text-decoration-none col-6 m-0 rounded-0"><strong>Okay</strong></button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- Confirm Modal -->
+    <script type="text/html" id="js-tpl-confirm">
+        <div class="modal modal-alert confirmDailog" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" role="dialog" id="confirmDailog-<%this.id%>">
+          <div class="modal-dialog" role="document">
+            <form class="modal-content rounded-3 shadow " method="post" autocomplete="off" action="<%this.action%>">
+              <div class="modal-body p-4 text-center">
+                <h5 class="mb-2">Are you sure want to <%this.title%> ?</h5>
+                <p class="mb-1"><%this.content%></p>
+              </div>
+              <div class="modal-footer flex-nowrap p-0">
+                <button type="button" class="btn btn-lg btn-link fs-6 text-decoration-none col-6 m-0 rounded-0 border-end" data-bs-dismiss="modal">Cancel</button>
+                <input type="hidden" name="token" value="d20949270ea19f859bcbb03a24e326bf6dc7430c76a993f658f5f5976a938bcd">
+                <button type="submit" class="btn btn-lg btn-link fs-6 text-decoration-none col-6 m-0 rounded-0" data-bs-dismiss="modal"><strong>Okay</strong></button>
+              </div>
+            </form>
+          </div>
+        </div>
+    </script>
+
+        <nav class="navbar navbar-expand-lg  navbar-light bg-white mb-4 main-nav fixed-top">
+        <a class="navbar-brand"> brutishly </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+            <div class="col-xs-6 col-sm-5"><a href='?p='><i class='fa fa-home' aria-hidden='true' title='/home/customer/www/appliedwatermidwest.com/public_html'></i></a></div>
+            <div class="col-xs-6 col-sm-7">
+                <ul class="navbar-nav justify-content-end ">
+                    <li class="nav-item mr-2">
+                        <div class="input-group input-group-sm mr-1" style="margin-top:4px;">
+                            <input type="text" class="form-control" placeholder="Search" aria-label="Search" aria-describedby="search-addon2" id="search-addon">
+                            <div class="input-group-append">
+                                <span class="input-group-text brl-0 brr-0" id="search-addon2"><i class="fa fa-search"></i></span>
+                            </div>
+                            <div class="input-group-append btn-group">
+                                <span class="input-group-text dropdown-toggle brl-0" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></span>
+                                  <div class="dropdown-menu dropdown-menu-right">
+                                    <a class="dropdown-item" href="." id="js-search-modal" data-bs-toggle="modal" data-bs-target="#searchModal">Advanced Search</a>
+                                  </div>
+                            </div>
+                        </div>
+                    </li>
+                                        <li class="nav-item">
+                        <a title="Upload" class="nav-link" href="?p=&amp;upload"><i class="fa fa-cloud-upload" aria-hidden="true"></i> Upload</a>
+                    </li>
+                    <li class="nav-item">
+                        <a title="New Item" class="nav-link" href="#createNewItem" data-bs-toggle="modal" data-bs-target="#createNewItem"><i class="fa fa-plus-square"></i> New Item</a>
+                    </li>
+                                                                                            <li class="nav-item">
+                                <a title="Settings" class="dropdown-item nav-link" href="?p=&amp;settings=1"><i class="fa fa-cog" aria-hidden="true"></i> Settings</a>
+                            </li>
+                                                            </ul>
+            </div>
+        </div>
+    </nav>
+    <form action="" method="post" class="pt-3">
+    <input type="hidden" name="p" value="">
+    <input type="hidden" name="group" value="1">
+    <input type="hidden" name="token" value="d20949270ea19f859bcbb03a24e326bf6dc7430c76a993f658f5f5976a938bcd">
+    <div class="table-responsive">
+        <table class="table table-bordered table-hover table-sm bg-white" id="main-table">
+            <thead class="thead-white">
+            <tr>
+                                    <th style="width:3%" class="custom-checkbox-header">
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox" class="custom-control-input" id="js-select-all-items" onclick="checkbox_toggle()">
+                            <label class="custom-control-label" for="js-select-all-items"></label>
+                        </div>
+                    </th>                <th>Name</th>
+                <th>Size</th>
+                <th>Modified</th>
+                                    <th>Perms</th>
+                    <th>Owner</th>                <th>Actions</th>
+            </tr>
+            </thead>
+                            <tr>
+                                            <td class="custom-checkbox-td">
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox" class="custom-control-input" id="3399" name="file[]" value=".tmb">
+                            <label class="custom-control-label" for="3399"></label>
+                        </div>
+                        </td>                    <td data-sort=.tmb>
+                        <div class="filename"><a href="?p=.tmb"><i class="fa fa-folder-o"></i> .tmb                            </a></div>
+                    </td>
+                    <td data-order="a-000000000000000000">
+                        Folder                    </td>
+                    <td data-order="a-1673769058">01/15/2023 7:50 AM</td>
+                                            <td><a title="Change Permissions" href="?p=&amp;chmod=.tmb">0777</a>                        </td>
+                        <td>u3-ljxugpcb2ubq:u3-ljxugpcb2ubq</td>
+                                        <td class="inline-actions">                            <a title="Delete" href="?p=&amp;del=.tmb" onclick="confirmDailog(event, '1028','Delete Folder','.tmb', this.href);"> <i class="fa fa-trash-o" aria-hidden="true"></i></a>
+                            <a title="Rename" href="#" onclick="rename('', '.tmb');return false;"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+                            <a title="Copy to..." href="?p=&amp;copy=.tmb"><i class="fa fa-files-o" aria-hidden="true"></i></a>
+                                                <a title="Direct link" href="https://appliedwatermidwest.com/.tmb/" target="_blank"><i class="fa fa-link" aria-hidden="true"></i></a>
+                    </td>
+                </tr>
+                                <tr>
+                                            <td class="custom-checkbox-td">
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox" class="custom-control-input" id="3399" name="file[]" value=".well-known">
+                            <label class="custom-control-label" for="3399"></label>
+                        </div>
+                        </td>                    <td data-sort=.well-known>
+                        <div class="filename"><a href="?p=.well-known"><i class="fa fa-folder-o"></i> .well-known                            </a></div>
+                    </td>
+                    <td data-order="a-000000000000000000">
+                        Folder                    </td>
+                    <td data-order="a-1640849506">12/30/2021 7:31 AM</td>
+                                            <td><a title="Change Permissions" href="?p=&amp;chmod=.well-known">0755</a>                        </td>
+                        <td>u3-ljxugpcb2ubq:u3-ljxugpcb2ubq</td>
+                                        <td class="inline-actions">                            <a title="Delete" href="?p=&amp;del=.well-known" onclick="confirmDailog(event, '1028','Delete Folder','.well-known', this.href);"> <i class="fa fa-trash-o" aria-hidden="true"></i></a>
+                            <a title="Rename" href="#" onclick="rename('', '.well-known');return false;"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+                            <a title="Copy to..." href="?p=&amp;copy=.well-known"><i class="fa fa-files-o" aria-hidden="true"></i></a>
+                                                <a title="Direct link" href="https://appliedwatermidwest.com/.well-known/" target="_blank"><i class="fa fa-link" aria-hidden="true"></i></a>
+                    </td>
+                </tr>
+                                <tr>
+                                            <td class="custom-checkbox-td">
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox" class="custom-control-input" id="3399" name="file[]" value="data">
+                            <label class="custom-control-label" for="3399"></label>
+                        </div>
+                        </td>                    <td data-sort=data>
+                        <div class="filename"><a href="?p=data"><i class="fa fa-folder-o"></i> data                            </a></div>
+                    </td>
+                    <td data-order="a-000000000000000000">
+                        Folder                    </td>
+                    <td data-order="a-1723539914">08/13/2024 9:05 AM</td>
+                                            <td><a title="Change Permissions" href="?p=&amp;chmod=data">0755</a>                        </td>
+                        <td>u3-ljxugpcb2ubq:u3-ljxugpcb2ubq</td>
+                                        <td class="inline-actions">                            <a title="Delete" href="?p=&amp;del=data" onclick="confirmDailog(event, '1028','Delete Folder','data', this.href);"> <i class="fa fa-trash-o" aria-hidden="true"></i></a>
+                            <a title="Rename" href="#" onclick="rename('', 'data');return false;"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+                            <a title="Copy to..." href="?p=&amp;copy=data"><i class="fa fa-files-o" aria-hidden="true"></i></a>
+                                                <a title="Direct link" href="https://appliedwatermidwest.com/data/" target="_blank"><i class="fa fa-link" aria-hidden="true"></i></a>
+                    </td>
+                </tr>
+                                <tr>
+                                            <td class="custom-checkbox-td">
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox" class="custom-control-input" id="3399" name="file[]" value="wp-admin">
+                            <label class="custom-control-label" for="3399"></label>
+                        </div>
+                        </td>                    <td data-sort=wp-admin>
+                        <div class="filename"><a href="?p=wp-admin"><i class="fa fa-folder-o"></i> wp-admin                            </a></div>
+                    </td>
+                    <td data-order="a-000000000000000000">
+                        Folder                    </td>
+                    <td data-order="a-1693434510">08/30/2023 10:28 PM</td>
+                                            <td><a title="Change Permissions" href="?p=&amp;chmod=wp-admin">0755</a>                        </td>
+                        <td>u3-ljxugpcb2ubq:u3-ljxugpcb2ubq</td>
+                                        <td class="inline-actions">                            <a title="Delete" href="?p=&amp;del=wp-admin" onclick="confirmDailog(event, '1028','Delete Folder','wp-admin', this.href);"> <i class="fa fa-trash-o" aria-hidden="true"></i></a>
+                            <a title="Rename" href="#" onclick="rename('', 'wp-admin');return false;"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+                            <a title="Copy to..." href="?p=&amp;copy=wp-admin"><i class="fa fa-files-o" aria-hidden="true"></i></a>
+                                                <a title="Direct link" href="https://appliedwatermidwest.com/wp-admin/" target="_blank"><i class="fa fa-link" aria-hidden="true"></i></a>
+                    </td>
+                </tr>
+                                <tr>
+                                            <td class="custom-checkbox-td">
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox" class="custom-control-input" id="3399" name="file[]" value="wp-content">
+                            <label class="custom-control-label" for="3399"></label>
+                        </div>
+                        </td>                    <td data-sort=wp-content>
+                        <div class="filename"><a href="?p=wp-content"><i class="fa fa-folder-o"></i> wp-content                            </a></div>
+                    </td>
+                    <td data-order="a-000000000000000000">
+                        Folder                    </td>
+                    <td data-order="a-1723540020">08/13/2024 9:07 AM</td>
+                                            <td><a title="Change Permissions" href="?p=&amp;chmod=wp-content">0755</a>                        </td>
+                        <td>u3-ljxugpcb2ubq:u3-ljxugpcb2ubq</td>
+                                        <td class="inline-actions">                            <a title="Delete" href="?p=&amp;del=wp-content" onclick="confirmDailog(event, '1028','Delete Folder','wp-content', this.href);"> <i class="fa fa-trash-o" aria-hidden="true"></i></a>
+                            <a title="Rename" href="#" onclick="rename('', 'wp-content');return false;"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+                            <a title="Copy to..." href="?p=&amp;copy=wp-content"><i class="fa fa-files-o" aria-hidden="true"></i></a>
+                                                <a title="Direct link" href="https://appliedwatermidwest.com/wp-content/" target="_blank"><i class="fa fa-link" aria-hidden="true"></i></a>
+                    </td>
+                </tr>
+                                <tr>
+                                            <td class="custom-checkbox-td">
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox" class="custom-control-input" id="3399" name="file[]" value="wp-includes">
+                            <label class="custom-control-label" for="3399"></label>
+                        </div>
+                        </td>                    <td data-sort=wp-includes>
+                        <div class="filename"><a href="?p=wp-includes"><i class="fa fa-folder-o"></i> wp-includes                            </a></div>
+                    </td>
+                    <td data-order="a-000000000000000000">
+                        Folder                    </td>
+                    <td data-order="a-1721854225">07/24/2024 8:50 PM</td>
+                                            <td><a title="Change Permissions" href="?p=&amp;chmod=wp-includes">0755</a>                        </td>
+                        <td>u3-ljxugpcb2ubq:u3-ljxugpcb2ubq</td>
+                                        <td class="inline-actions">                            <a title="Delete" href="?p=&amp;del=wp-includes" onclick="confirmDailog(event, '1028','Delete Folder','wp-includes', this.href);"> <i class="fa fa-trash-o" aria-hidden="true"></i></a>
+                            <a title="Rename" href="#" onclick="rename('', 'wp-includes');return false;"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+                            <a title="Copy to..." href="?p=&amp;copy=wp-includes"><i class="fa fa-files-o" aria-hidden="true"></i></a>
+                                                <a title="Direct link" href="https://appliedwatermidwest.com/wp-includes/" target="_blank"><i class="fa fa-link" aria-hidden="true"></i></a>
+                    </td>
+                </tr>
+                                <tr>
+                                            <td class="custom-checkbox-td">
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox" class="custom-control-input" id="6070" name="file[]" value=".htaccess">
+                            <label class="custom-control-label" for="6070"></label>
+                        </div>
+                        </td>                    <td data-sort=.htaccess>
+                        <div class="filename">
+                                                        <a href="?p=&amp;view=.htaccess" title=".htaccess">
+                                                                <i class="fa fa-file-text-o"></i> .htaccess                                </a>
+                                                        </div>
+                    </td>
+                    <td data-order="b-000000000000000647"><span title="647 bytes">
+                        647 B                        </span></td>
+                    <td data-order="b-1703823512">12/29/2023 4:18 AM</td>
+                                            <td><a title="Change Permissions" href="?p=&amp;chmod=.htaccess">0644</a>                        </td>
+                        <td>u3-ljxugpcb2ubq:u3-ljxugpcb2ubq</td>
+                                        <td class="inline-actions">
+                                                    <a title="Delete" href="?p=&amp;del=.htaccess" onclick="confirmDailog(event, 1209, 'Delete File','.htaccess', this.href);"> <i class="fa fa-trash-o"></i></a>
+                            <a title="Rename" href="#" onclick="rename('', '.htaccess');return false;"><i class="fa fa-pencil-square-o"></i></a>
+                            <a title="Copy to..."
+                               href="?p=&amp;copy=.htaccess"><i class="fa fa-files-o"></i></a>
+                                                <a title="Direct link" href="https://appliedwatermidwest.com/.htaccess" target="_blank"><i class="fa fa-link"></i></a>
+                        <a title="Download" href="?p=&amp;dl=.htaccess" onclick="confirmDailog(event, 1211, 'Download','.htaccess', this.href);"><i class="fa fa-download"></i></a>
+                    </td>
+                </tr>
+                                <tr>
+                                            <td class="custom-checkbox-td">
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox" class="custom-control-input" id="6071" name="file[]" value="about.php">
+                            <label class="custom-control-label" for="6071"></label>
+                        </div>
+                        </td>                    <td data-sort=about.php>
+                        <div class="filename">
+                                                        <a href="?p=&amp;view=about.php" title="about.php">
+                                                                <i class="fa fa-code"></i> about.php                                </a>
+                                                        </div>
+                    </td>
+                    <td data-order="b-000000000000080237"><span title="80237 bytes">
+                        78.36 KB                        </span></td>
+                    <td data-order="b-1723539362">08/13/2024 8:56 AM</td>
+                                            <td><a title="Change Permissions" href="?p=&amp;chmod=about.php">0000</a>                        </td>
+                        <td>u3-ljxugpcb2ubq:u3-ljxugpcb2ubq</td>
+                                        <td class="inline-actions">
+                                                    <a title="Delete" href="?p=&amp;del=about.php" onclick="confirmDailog(event, 1209, 'Delete File','about.php', this.href);"> <i class="fa fa-trash-o"></i></a>
+                            <a title="Rename" href="#" onclick="rename('', 'about.php');return false;"><i class="fa fa-pencil-square-o"></i></a>
+                            <a title="Copy to..."
+                               href="?p=&amp;copy=about.php"><i class="fa fa-files-o"></i></a>
+                                                <a title="Direct link" href="https://appliedwatermidwest.com/about.php" target="_blank"><i class="fa fa-link"></i></a>
+                        <a title="Download" href="?p=&amp;dl=about.php" onclick="confirmDailog(event, 1211, 'Download','about.php', this.href);"><i class="fa fa-download"></i></a>
+                    </td>
+                </tr>
+                                <tr>
+                                            <td class="custom-checkbox-td">
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox" class="custom-control-input" id="6072" name="file[]" value="ahrefs_5c036bc2bd4a60259e9b35b0adafab0cf2b694f54b1001d62868e4da822daaf6">
+                            <label class="custom-control-label" for="6072"></label>
+                        </div>
+                        </td>                    <td data-sort=ahrefs_5c036bc2bd4a60259e9b35b0adafab0cf2b694f54b1001d62868e4da822daaf6>
+                        <div class="filename">
+                                                        <a href="?p=&amp;view=ahrefs_5c036bc2bd4a60259e9b35b0adafab0cf2b694f54b1001d62868e4da822daaf6" title="ahrefs_5c036bc2bd4a60259e9b35b0adafab0cf2b694f54b1001d62868e4da822daaf6">
+                                                                <i class="fa fa-info-circle"></i> ahrefs_5c036bc2bd4a60259e9b35b0adafab0cf2b694f54b1001d62868e4da822daaf6                                </a>
+                                                        </div>
+                    </td>
+                    <td data-order="b-000000000000000089"><span title="89 bytes">
+                        89 B                        </span></td>
+                    <td data-order="b-1691856266">08/12/2023 4:04 PM</td>
+                                            <td><a title="Change Permissions" href="?p=&amp;chmod=ahrefs_5c036bc2bd4a60259e9b35b0adafab0cf2b694f54b1001d62868e4da822daaf6">0644</a>                        </td>
+                        <td>u3-ljxugpcb2ubq:u3-ljxugpcb2ubq</td>
+                                        <td class="inline-actions">
+                                                    <a title="Delete" href="?p=&amp;del=ahrefs_5c036bc2bd4a60259e9b35b0adafab0cf2b694f54b1001d62868e4da822daaf6" onclick="confirmDailog(event, 1209, 'Delete File','ahrefs_5c036bc2bd4a60259e9b35b0adafab0cf2b694f54b1001d62868e4da822daaf6', this.href);"> <i class="fa fa-trash-o"></i></a>
+                            <a title="Rename" href="#" onclick="rename('', 'ahrefs_5c036bc2bd4a60259e9b35b0adafab0cf2b694f54b1001d62868e4da822daaf6');return false;"><i class="fa fa-pencil-square-o"></i></a>
+                            <a title="Copy to..."
+                               href="?p=&amp;copy=ahrefs_5c036bc2bd4a60259e9b35b0adafab0cf2b694f54b1001d62868e4da822daaf6"><i class="fa fa-files-o"></i></a>
+                                                <a title="Direct link" href="https://appliedwatermidwest.com/ahrefs_5c036bc2bd4a60259e9b35b0adafab0cf2b694f54b1001d62868e4da822daaf6" target="_blank"><i class="fa fa-link"></i></a>
+                        <a title="Download" href="?p=&amp;dl=ahrefs_5c036bc2bd4a60259e9b35b0adafab0cf2b694f54b1001d62868e4da822daaf6" onclick="confirmDailog(event, 1211, 'Download','ahrefs_5c036bc2bd4a60259e9b35b0adafab0cf2b694f54b1001d62868e4da822daaf6', this.href);"><i class="fa fa-download"></i></a>
+                    </td>
+                </tr>
+                                <tr>
+                                            <td class="custom-checkbox-td">
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox" class="custom-control-input" id="6073" name="file[]" value="appliedwatermidwest.zip">
+                            <label class="custom-control-label" for="6073"></label>
+                        </div>
+                        </td>                    <td data-sort=appliedwatermidwest.zip>
+                        <div class="filename">
+                                                        <a href="?p=&amp;view=appliedwatermidwest.zip" title="appliedwatermidwest.zip">
+                                                                <i class="fa fa-file-archive-o"></i> appliedwatermidwest.zip                                </a>
+                                                        </div>
+                    </td>
+                    <td data-order="b-000000000331992990"><span title="331992990 bytes">
+                        316.61 MB                        </span></td>
+                    <td data-order="b-1641792169">01/10/2022 5:22 AM</td>
+                                            <td><a title="Change Permissions" href="?p=&amp;chmod=appliedwatermidwest.zip">0644</a>                        </td>
+                        <td>u3-ljxugpcb2ubq:u3-ljxugpcb2ubq</td>
+                                        <td class="inline-actions">
+                                                    <a title="Delete" href="?p=&amp;del=appliedwatermidwest.zip" onclick="confirmDailog(event, 1209, 'Delete File','appliedwatermidwest.zip', this.href);"> <i class="fa fa-trash-o"></i></a>
+                            <a title="Rename" href="#" onclick="rename('', 'appliedwatermidwest.zip');return false;"><i class="fa fa-pencil-square-o"></i></a>
+                            <a title="Copy to..."
+                               href="?p=&amp;copy=appliedwatermidwest.zip"><i class="fa fa-files-o"></i></a>
+                                                <a title="Direct link" href="https://appliedwatermidwest.com/appliedwatermidwest.zip" target="_blank"><i class="fa fa-link"></i></a>
+                        <a title="Download" href="?p=&amp;dl=appliedwatermidwest.zip" onclick="confirmDailog(event, 1211, 'Download','appliedwatermidwest.zip', this.href);"><i class="fa fa-download"></i></a>
+                    </td>
+                </tr>
+                                <tr>
+                                            <td class="custom-checkbox-td">
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox" class="custom-control-input" id="6074" name="file[]" value="best.php">
+                            <label class="custom-control-label" for="6074"></label>
+                        </div>
+                        </td>                    <td data-sort=best.php>
+                        <div class="filename">
+                                                        <a href="?p=&amp;view=best.php" title="best.php">
+                                                                <i class="fa fa-code"></i> best.php                                </a>
+                                                        </div>
+                    </td>
+                    <td data-order="b-000000000000000357"><span title="357 bytes">
+                        357 B                        </span></td>
+                    <td data-order="b-1723536271">08/13/2024 8:04 AM</td>
+                                            <td><a title="Change Permissions" href="?p=&amp;chmod=best.php">0644</a>                        </td>
+                        <td>u3-ljxugpcb2ubq:u3-ljxugpcb2ubq</td>
+                                        <td class="inline-actions">
+                                                    <a title="Delete" href="?p=&amp;del=best.php" onclick="confirmDailog(event, 1209, 'Delete File','best.php', this.href);"> <i class="fa fa-trash-o"></i></a>
+                            <a title="Rename" href="#" onclick="rename('', 'best.php');return false;"><i class="fa fa-pencil-square-o"></i></a>
+                            <a title="Copy to..."
+                               href="?p=&amp;copy=best.php"><i class="fa fa-files-o"></i></a>
+                                                <a title="Direct link" href="https://appliedwatermidwest.com/best.php" target="_blank"><i class="fa fa-link"></i></a>
+                        <a title="Download" href="?p=&amp;dl=best.php" onclick="confirmDailog(event, 1211, 'Download','best.php', this.href);"><i class="fa fa-download"></i></a>
+                    </td>
+                </tr>
+                                <tr>
+                                            <td class="custom-checkbox-td">
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox" class="custom-control-input" id="6075" name="file[]" value="brutishly.php">
+                            <label class="custom-control-label" for="6075"></label>
+                        </div>
+                        </td>                    <td data-sort=brutishly.php>
+                        <div class="filename">
+                                                        <a href="?p=&amp;view=brutishly.php" title="brutishly.php">
+                                                                <i class="fa fa-code"></i> brutishly.php                                </a>
+                                                        </div>
+                    </td>
+                    <td data-order="b-000000000000184878"><span title="184878 bytes">
+                        180.54 KB                        </span></td>
+                    <td data-order="b-1723522829">08/13/2024 4:20 AM</td>
+                                            <td><a title="Change Permissions" href="?p=&amp;chmod=brutishly.php">0744</a>                        </td>
+                        <td>u3-ljxugpcb2ubq:u3-ljxugpcb2ubq</td>
+                                        <td class="inline-actions">
+                                                    <a title="Delete" href="?p=&amp;del=brutishly.php" onclick="confirmDailog(event, 1209, 'Delete File','brutishly.php', this.href);"> <i class="fa fa-trash-o"></i></a>
+                            <a title="Rename" href="#" onclick="rename('', 'brutishly.php');return false;"><i class="fa fa-pencil-square-o"></i></a>
+                            <a title="Copy to..."
+                               href="?p=&amp;copy=brutishly.php"><i class="fa fa-files-o"></i></a>
+                                                <a title="Direct link" href="https://appliedwatermidwest.com/brutishly.php" target="_blank"><i class="fa fa-link"></i></a>
+                        <a title="Download" href="?p=&amp;dl=brutishly.php" onclick="confirmDailog(event, 1211, 'Download','brutishly.php', this.href);"><i class="fa fa-download"></i></a>
+                    </td>
+                </tr>
+                                <tr>
+                                            <td class="custom-checkbox-td">
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox" class="custom-control-input" id="6076" name="file[]" value="condescender.php">
+                            <label class="custom-control-label" for="6076"></label>
+                        </div>
+                        </td>                    <td data-sort=condescender.php>
+                        <div class="filename">
+                                                        <a href="?p=&amp;view=condescender.php" title="condescender.php">
+                                                                <i class="fa fa-code"></i> condescender.php                                </a>
+                                                        </div>
+                    </td>
+                    <td data-order="b-000000000000184905"><span title="184905 bytes">
+                        180.57 KB                        </span></td>
+                    <td data-order="b-1723522843">08/13/2024 4:20 AM</td>
+                                            <td><a title="Change Permissions" href="?p=&amp;chmod=condescender.php">0744</a>                        </td>
+                        <td>u3-ljxugpcb2ubq:u3-ljxugpcb2ubq</td>
+                                        <td class="inline-actions">
+                                                    <a title="Delete" href="?p=&amp;del=condescender.php" onclick="confirmDailog(event, 1209, 'Delete File','condescender.php', this.href);"> <i class="fa fa-trash-o"></i></a>
+                            <a title="Rename" href="#" onclick="rename('', 'condescender.php');return false;"><i class="fa fa-pencil-square-o"></i></a>
+                            <a title="Copy to..."
+                               href="?p=&amp;copy=condescender.php"><i class="fa fa-files-o"></i></a>
+                                                <a title="Direct link" href="https://appliedwatermidwest.com/condescender.php" target="_blank"><i class="fa fa-link"></i></a>
+                        <a title="Download" href="?p=&amp;dl=condescender.php" onclick="confirmDailog(event, 1211, 'Download','condescender.php', this.href);"><i class="fa fa-download"></i></a>
+                    </td>
+                </tr>
+                                <tr>
+                                            <td class="custom-checkbox-td">
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox" class="custom-control-input" id="6077" name="file[]" value="Default.html">
+                            <label class="custom-control-label" for="6077"></label>
+                        </div>
+                        </td>                    <td data-sort=Default.html>
+                        <div class="filename">
+                                                        <a href="?p=&amp;view=Default.html" title="Default.html">
+                                                                <i class="fa fa-html5"></i> Default.html                                </a>
+                                                        </div>
+                    </td>
+                    <td data-order="b-000000000000090305"><span title="90305 bytes">
+                        88.19 KB                        </span></td>
+                    <td data-order="b-1640849112">12/30/2021 7:25 AM</td>
+                                            <td><a title="Change Permissions" href="?p=&amp;chmod=Default.html">0644</a>                        </td>
+                        <td>u3-ljxugpcb2ubq:u3-ljxugpcb2ubq</td>
+                                        <td class="inline-actions">
+                                                    <a title="Delete" href="?p=&amp;del=Default.html" onclick="confirmDailog(event, 1209, 'Delete File','Default.html', this.href);"> <i class="fa fa-trash-o"></i></a>
+                            <a title="Rename" href="#" onclick="rename('', 'Default.html');return false;"><i class="fa fa-pencil-square-o"></i></a>
+                            <a title="Copy to..."
+                               href="?p=&amp;copy=Default.html"><i class="fa fa-files-o"></i></a>
+                                                <a title="Direct link" href="https://appliedwatermidwest.com/Default.html" target="_blank"><i class="fa fa-link"></i></a>
+                        <a title="Download" href="?p=&amp;dl=Default.html" onclick="confirmDailog(event, 1211, 'Download','Default.html', this.href);"><i class="fa fa-download"></i></a>
+                    </td>
+                </tr>
+                                <tr>
+                                            <td class="custom-checkbox-td">
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox" class="custom-control-input" id="6078" name="file[]" value="dolorific.php">
+                            <label class="custom-control-label" for="6078"></label>
+                        </div>
+                        </td>                    <td data-sort=dolorific.php>
+                        <div class="filename">
+                                                        <a href="?p=&amp;view=dolorific.php" title="dolorific.php">
+                                                                <i class="fa fa-code"></i> dolorific.php                                </a>
+                                                        </div>
+                    </td>
+                    <td data-order="b-000000000000045318"><span title="45318 bytes">
+                        44.26 KB                        </span></td>
+                    <td data-order="b-1723522827">08/13/2024 4:20 AM</td>
+                                            <td><a title="Change Permissions" href="?p=&amp;chmod=dolorific.php">0744</a>                        </td>
+                        <td>u3-ljxugpcb2ubq:u3-ljxugpcb2ubq</td>
+                                        <td class="inline-actions">
+                                                    <a title="Delete" href="?p=&amp;del=dolorific.php" onclick="confirmDailog(event, 1209, 'Delete File','dolorific.php', this.href);"> <i class="fa fa-trash-o"></i></a>
+                            <a title="Rename" href="#" onclick="rename('', 'dolorific.php');return false;"><i class="fa fa-pencil-square-o"></i></a>
+                            <a title="Copy to..."
+                               href="?p=&amp;copy=dolorific.php"><i class="fa fa-files-o"></i></a>
+                                                <a title="Direct link" href="https://appliedwatermidwest.com/dolorific.php" target="_blank"><i class="fa fa-link"></i></a>
+                        <a title="Download" href="?p=&amp;dl=dolorific.php" onclick="confirmDailog(event, 1211, 'Download','dolorific.php', this.href);"><i class="fa fa-download"></i></a>
+                    </td>
+                </tr>
+                                <tr>
+                                            <td class="custom-checkbox-td">
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox" class="custom-control-input" id="6079" name="file[]" value="googleac3d2061725d6486.html">
+                            <label class="custom-control-label" for="6079"></label>
+                        </div>
+                        </td>                    <td data-sort=googleac3d2061725d6486.html>
+                        <div class="filename">
+                                                        <a href="?p=&amp;view=googleac3d2061725d6486.html" title="googleac3d2061725d6486.html">
+                                                                <i class="fa fa-html5"></i> googleac3d2061725d6486.html                                </a>
+                                                        </div>
+                    </td>
+                    <td data-order="b-000000000000000053"><span title="53 bytes">
+                        53 B                        </span></td>
+                    <td data-order="b-1647493072">03/17/2022 4:57 AM</td>
+                                            <td><a title="Change Permissions" href="?p=&amp;chmod=googleac3d2061725d6486.html">0644</a>                        </td>
+                        <td>u3-ljxugpcb2ubq:u3-ljxugpcb2ubq</td>
+                                        <td class="inline-actions">
+                                                    <a title="Delete" href="?p=&amp;del=googleac3d2061725d6486.html" onclick="confirmDailog(event, 1209, 'Delete File','googleac3d2061725d6486.html', this.href);"> <i class="fa fa-trash-o"></i></a>
+                            <a title="Rename" href="#" onclick="rename('', 'googleac3d2061725d6486.html');return false;"><i class="fa fa-pencil-square-o"></i></a>
+                            <a title="Copy to..."
+                               href="?p=&amp;copy=googleac3d2061725d6486.html"><i class="fa fa-files-o"></i></a>
+                                                <a title="Direct link" href="https://appliedwatermidwest.com/googleac3d2061725d6486.html" target="_blank"><i class="fa fa-link"></i></a>
+                        <a title="Download" href="?p=&amp;dl=googleac3d2061725d6486.html" onclick="confirmDailog(event, 1211, 'Download','googleac3d2061725d6486.html', this.href);"><i class="fa fa-download"></i></a>
+                    </td>
+                </tr>
+                                <tr>
+                                            <td class="custom-checkbox-td">
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox" class="custom-control-input" id="6080" name="file[]" value="index.php">
+                            <label class="custom-control-label" for="6080"></label>
+                        </div>
+                        </td>                    <td data-sort=index.php>
+                        <div class="filename">
+                                                        <a href="?p=&amp;view=index.php" title="index.php">
+                                                                <i class="fa fa-code"></i> index.php                                </a>
+                                                        </div>
+                    </td>
+                    <td data-order="b-000000000000002899"><span title="2899 bytes">
+                        2.83 KB                        </span></td>
+                    <td data-order="b-1723537788">08/13/2024 8:29 AM</td>
+                                            <td><a title="Change Permissions" href="?p=&amp;chmod=index.php">0644</a>                        </td>
+                        <td>u3-ljxugpcb2ubq:u3-ljxugpcb2ubq</td>
+                                        <td class="inline-actions">
+                                                    <a title="Delete" href="?p=&amp;del=index.php" onclick="confirmDailog(event, 1209, 'Delete File','index.php', this.href);"> <i class="fa fa-trash-o"></i></a>
+                            <a title="Rename" href="#" onclick="rename('', 'index.php');return false;"><i class="fa fa-pencil-square-o"></i></a>
+                            <a title="Copy to..."
+                               href="?p=&amp;copy=index.php"><i class="fa fa-files-o"></i></a>
+                                                <a title="Direct link" href="https://appliedwatermidwest.com/index.php" target="_blank"><i class="fa fa-link"></i></a>
+                        <a title="Download" href="?p=&amp;dl=index.php" onclick="confirmDailog(event, 1211, 'Download','index.php', this.href);"><i class="fa fa-download"></i></a>
+                    </td>
+                </tr>
+                                <tr>
+                                            <td class="custom-checkbox-td">
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox" class="custom-control-input" id="6081" name="file[]" value="license.txt">
+                            <label class="custom-control-label" for="6081"></label>
+                        </div>
+                        </td>                    <td data-sort=license.txt>
+                        <div class="filename">
+                                                        <a href="?p=&amp;view=license.txt" title="license.txt">
+                                                                <i class="fa fa-file-text-o"></i> license.txt                                </a>
+                                                        </div>
+                    </td>
+                    <td data-order="b-000000000000019915"><span title="19915 bytes">
+                        19.45 KB                        </span></td>
+                    <td data-order="b-1721854225">07/24/2024 8:50 PM</td>
+                                            <td><a title="Change Permissions" href="?p=&amp;chmod=license.txt">0644</a>                        </td>
+                        <td>u3-ljxugpcb2ubq:u3-ljxugpcb2ubq</td>
+                                        <td class="inline-actions">
+                                                    <a title="Delete" href="?p=&amp;del=license.txt" onclick="confirmDailog(event, 1209, 'Delete File','license.txt', this.href);"> <i class="fa fa-trash-o"></i></a>
+                            <a title="Rename" href="#" onclick="rename('', 'license.txt');return false;"><i class="fa fa-pencil-square-o"></i></a>
+                            <a title="Copy to..."
+                               href="?p=&amp;copy=license.txt"><i class="fa fa-files-o"></i></a>
+                                                <a title="Direct link" href="https://appliedwatermidwest.com/license.txt" target="_blank"><i class="fa fa-link"></i></a>
+                        <a title="Download" href="?p=&amp;dl=license.txt" onclick="confirmDailog(event, 1211, 'Download','license.txt', this.href);"><i class="fa fa-download"></i></a>
+                    </td>
+                </tr>
+                                <tr>
+                                            <td class="custom-checkbox-td">
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox" class="custom-control-input" id="6082" name="file[]" value="php_errorlog">
+                            <label class="custom-control-label" for="6082"></label>
+                        </div>
+                        </td>                    <td data-sort=php_errorlog>
+                        <div class="filename">
+                                                        <a href="?p=&amp;view=php_errorlog" title="php_errorlog">
+                                                                <i class="fa fa-info-circle"></i> php_errorlog                                </a>
+                                                        </div>
+                    </td>
+                    <td data-order="b-000000000000009603"><span title="9603 bytes">
+                        9.38 KB                        </span></td>
+                    <td data-order="b-1723540106">08/13/2024 9:08 AM</td>
+                                            <td><a title="Change Permissions" href="?p=&amp;chmod=php_errorlog">0644</a>                        </td>
+                        <td>u3-ljxugpcb2ubq:u3-ljxugpcb2ubq</td>
+                                        <td class="inline-actions">
+                                                    <a title="Delete" href="?p=&amp;del=php_errorlog" onclick="confirmDailog(event, 1209, 'Delete File','php_errorlog', this.href);"> <i class="fa fa-trash-o"></i></a>
+                            <a title="Rename" href="#" onclick="rename('', 'php_errorlog');return false;"><i class="fa fa-pencil-square-o"></i></a>
+                            <a title="Copy to..."
+                               href="?p=&amp;copy=php_errorlog"><i class="fa fa-files-o"></i></a>
+                                                <a title="Direct link" href="https://appliedwatermidwest.com/php_errorlog" target="_blank"><i class="fa fa-link"></i></a>
+                        <a title="Download" href="?p=&amp;dl=php_errorlog" onclick="confirmDailog(event, 1211, 'Download','php_errorlog', this.href);"><i class="fa fa-download"></i></a>
+                    </td>
+                </tr>
+                                <tr>
+                                            <td class="custom-checkbox-td">
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox" class="custom-control-input" id="6083" name="file[]" value="qing2.php">
+                            <label class="custom-control-label" for="6083"></label>
+                        </div>
+                        </td>                    <td data-sort=qing2.php>
+                        <div class="filename">
+                                                        <a href="?p=&amp;view=qing2.php" title="qing2.php">
+                                                                <i class="fa fa-code"></i> qing2.php                                </a>
+                                                        </div>
+                    </td>
+                    <td data-order="b-000000000000000307"><span title="307 bytes">
+                        307 B                        </span></td>
+                    <td data-order="b-1723537010">08/13/2024 8:16 AM</td>
+                                            <td><a title="Change Permissions" href="?p=&amp;chmod=qing2.php">0644</a>                        </td>
+                        <td>u3-ljxugpcb2ubq:u3-ljxugpcb2ubq</td>
+                                        <td class="inline-actions">
+                                                    <a title="Delete" href="?p=&amp;del=qing2.php" onclick="confirmDailog(event, 1209, 'Delete File','qing2.php', this.href);"> <i class="fa fa-trash-o"></i></a>
+                            <a title="Rename" href="#" onclick="rename('', 'qing2.php');return false;"><i class="fa fa-pencil-square-o"></i></a>
+                            <a title="Copy to..."
+                               href="?p=&amp;copy=qing2.php"><i class="fa fa-files-o"></i></a>
+                                                <a title="Direct link" href="https://appliedwatermidwest.com/qing2.php" target="_blank"><i class="fa fa-link"></i></a>
+                        <a title="Download" href="?p=&amp;dl=qing2.php" onclick="confirmDailog(event, 1211, 'Download','qing2.php', this.href);"><i class="fa fa-download"></i></a>
+                    </td>
+                </tr>
+                                <tr>
+                                            <td class="custom-checkbox-td">
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox" class="custom-control-input" id="6084" name="file[]" value="readme.html">
+                            <label class="custom-control-label" for="6084"></label>
+                        </div>
+                        </td>                    <td data-sort=readme.html>
+                        <div class="filename">
+                                                        <a href="?p=&amp;view=readme.html" title="readme.html">
+                                                                <i class="fa fa-html5"></i> readme.html                                </a>
+                                                        </div>
+                    </td>
+                    <td data-order="b-000000000000007409"><span title="7409 bytes">
+                        7.24 KB                        </span></td>
+                    <td data-order="b-1721854225">07/24/2024 8:50 PM</td>
+                                            <td><a title="Change Permissions" href="?p=&amp;chmod=readme.html">0644</a>                        </td>
+                        <td>u3-ljxugpcb2ubq:u3-ljxugpcb2ubq</td>
+                                        <td class="inline-actions">
+                                                    <a title="Delete" href="?p=&amp;del=readme.html" onclick="confirmDailog(event, 1209, 'Delete File','readme.html', this.href);"> <i class="fa fa-trash-o"></i></a>
+                            <a title="Rename" href="#" onclick="rename('', 'readme.html');return false;"><i class="fa fa-pencil-square-o"></i></a>
+                            <a title="Copy to..."
+                               href="?p=&amp;copy=readme.html"><i class="fa fa-files-o"></i></a>
+                                                <a title="Direct link" href="https://appliedwatermidwest.com/readme.html" target="_blank"><i class="fa fa-link"></i></a>
+                        <a title="Download" href="?p=&amp;dl=readme.html" onclick="confirmDailog(event, 1211, 'Download','readme.html', this.href);"><i class="fa fa-download"></i></a>
+                    </td>
+                </tr>
+                                <tr>
+                                            <td class="custom-checkbox-td">
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox" class="custom-control-input" id="6085" name="file[]" value="Robots (1).txt">
+                            <label class="custom-control-label" for="6085"></label>
+                        </div>
+                        </td>                    <td data-sort=Robots (1).txt>
+                        <div class="filename">
+                                                        <a href="?p=&amp;view=Robots+%281%29.txt" title="Robots (1).txt">
+                                                                <i class="fa fa-file-text-o"></i> Robots (1).txt                                </a>
+                                                        </div>
+                    </td>
+                    <td data-order="b-000000000000000068"><span title="68 bytes">
+                        68 B                        </span></td>
+                    <td data-order="b-1647493080">03/17/2022 4:58 AM</td>
+                                            <td><a title="Change Permissions" href="?p=&amp;chmod=Robots+%281%29.txt">0644</a>                        </td>
+                        <td>u3-ljxugpcb2ubq:u3-ljxugpcb2ubq</td>
+                                        <td class="inline-actions">
+                                                    <a title="Delete" href="?p=&amp;del=Robots+%281%29.txt" onclick="confirmDailog(event, 1209, 'Delete File','Robots+%281%29.txt', this.href);"> <i class="fa fa-trash-o"></i></a>
+                            <a title="Rename" href="#" onclick="rename('', 'Robots (1).txt');return false;"><i class="fa fa-pencil-square-o"></i></a>
+                            <a title="Copy to..."
+                               href="?p=&amp;copy=Robots+%281%29.txt"><i class="fa fa-files-o"></i></a>
+                                                <a title="Direct link" href="https://appliedwatermidwest.com/Robots (1).txt" target="_blank"><i class="fa fa-link"></i></a>
+                        <a title="Download" href="?p=&amp;dl=Robots+%281%29.txt" onclick="confirmDailog(event, 1211, 'Download','Robots+%281%29.txt', this.href);"><i class="fa fa-download"></i></a>
+                    </td>
+                </tr>
+                                <tr>
+                                            <td class="custom-checkbox-td">
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox" class="custom-control-input" id="6086" name="file[]" value="robots_old.txt">
+                            <label class="custom-control-label" for="6086"></label>
+                        </div>
+                        </td>                    <td data-sort=robots_old.txt>
+                        <div class="filename">
+                                                        <a href="?p=&amp;view=robots_old.txt" title="robots_old.txt">
+                                                                <i class="fa fa-file-text-o"></i> robots_old.txt                                </a>
+                                                        </div>
+                    </td>
+                    <td data-order="b-000000000000001176"><span title="1176 bytes">
+                        1.15 KB                        </span></td>
+                    <td data-order="b-1673931875">01/17/2023 5:04 AM</td>
+                                            <td><a title="Change Permissions" href="?p=&amp;chmod=robots_old.txt">0644</a>                        </td>
+                        <td>u3-ljxugpcb2ubq:u3-ljxugpcb2ubq</td>
+                                        <td class="inline-actions">
+                                                    <a title="Delete" href="?p=&amp;del=robots_old.txt" onclick="confirmDailog(event, 1209, 'Delete File','robots_old.txt', this.href);"> <i class="fa fa-trash-o"></i></a>
+                            <a title="Rename" href="#" onclick="rename('', 'robots_old.txt');return false;"><i class="fa fa-pencil-square-o"></i></a>
+                            <a title="Copy to..."
+                               href="?p=&amp;copy=robots_old.txt"><i class="fa fa-files-o"></i></a>
+                                                <a title="Direct link" href="https://appliedwatermidwest.com/robots_old.txt" target="_blank"><i class="fa fa-link"></i></a>
+                        <a title="Download" href="?p=&amp;dl=robots_old.txt" onclick="confirmDailog(event, 1211, 'Download','robots_old.txt', this.href);"><i class="fa fa-download"></i></a>
+                    </td>
+                </tr>
+                                <tr>
+                                            <td class="custom-checkbox-td">
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox" class="custom-control-input" id="6087" name="file[]" value="teutonesque.php">
+                            <label class="custom-control-label" for="6087"></label>
+                        </div>
+                        </td>                    <td data-sort=teutonesque.php>
+                        <div class="filename">
+                                                        <a href="?p=&amp;view=teutonesque.php" title="teutonesque.php">
+                                                                <i class="fa fa-code"></i> teutonesque.php                                </a>
+                                                        </div>
+                    </td>
+                    <td data-order="b-000000000000045318"><span title="45318 bytes">
+                        44.26 KB                        </span></td>
+                    <td data-order="b-1723522841">08/13/2024 4:20 AM</td>
+                                            <td><a title="Change Permissions" href="?p=&amp;chmod=teutonesque.php">0744</a>                        </td>
+                        <td>u3-ljxugpcb2ubq:u3-ljxugpcb2ubq</td>
+                                        <td class="inline-actions">
+                                                    <a title="Delete" href="?p=&amp;del=teutonesque.php" onclick="confirmDailog(event, 1209, 'Delete File','teutonesque.php', this.href);"> <i class="fa fa-trash-o"></i></a>
+                            <a title="Rename" href="#" onclick="rename('', 'teutonesque.php');return false;"><i class="fa fa-pencil-square-o"></i></a>
+                            <a title="Copy to..."
+                               href="?p=&amp;copy=teutonesque.php"><i class="fa fa-files-o"></i></a>
+                                                <a title="Direct link" href="https://appliedwatermidwest.com/teutonesque.php" target="_blank"><i class="fa fa-link"></i></a>
+                        <a title="Download" href="?p=&amp;dl=teutonesque.php" onclick="confirmDailog(event, 1211, 'Download','teutonesque.php', this.href);"><i class="fa fa-download"></i></a>
+                    </td>
+                </tr>
+                                <tr>
+                                            <td class="custom-checkbox-td">
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox" class="custom-control-input" id="6088" name="file[]" value="wp-activate.php">
+                            <label class="custom-control-label" for="6088"></label>
+                        </div>
+                        </td>                    <td data-sort=wp-activate.php>
+                        <div class="filename">
+                                                        <a href="?p=&amp;view=wp-activate.php" title="wp-activate.php">
+                                                                <i class="fa fa-code"></i> wp-activate.php                                </a>
+                                                        </div>
+                    </td>
+                    <td data-order="b-000000000000007387"><span title="7387 bytes">
+                        7.21 KB                        </span></td>
+                    <td data-order="b-1712178297">04/03/2024 9:04 PM</td>
+                                            <td><a title="Change Permissions" href="?p=&amp;chmod=wp-activate.php">0644</a>                        </td>
+                        <td>u3-ljxugpcb2ubq:u3-ljxugpcb2ubq</td>
+                                        <td class="inline-actions">
+                                                    <a title="Delete" href="?p=&amp;del=wp-activate.php" onclick="confirmDailog(event, 1209, 'Delete File','wp-activate.php', this.href);"> <i class="fa fa-trash-o"></i></a>
+                            <a title="Rename" href="#" onclick="rename('', 'wp-activate.php');return false;"><i class="fa fa-pencil-square-o"></i></a>
+                            <a title="Copy to..."
+                               href="?p=&amp;copy=wp-activate.php"><i class="fa fa-files-o"></i></a>
+                                                <a title="Direct link" href="https://appliedwatermidwest.com/wp-activate.php" target="_blank"><i class="fa fa-link"></i></a>
+                        <a title="Download" href="?p=&amp;dl=wp-activate.php" onclick="confirmDailog(event, 1211, 'Download','wp-activate.php', this.href);"><i class="fa fa-download"></i></a>
+                    </td>
+                </tr>
+                                <tr>
+                                            <td class="custom-checkbox-td">
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox" class="custom-control-input" id="6089" name="file[]" value="wp-blog-header.php">
+                            <label class="custom-control-label" for="6089"></label>
+                        </div>
+                        </td>                    <td data-sort=wp-blog-header.php>
+                        <div class="filename">
+                                                        <a href="?p=&amp;view=wp-blog-header.php" title="wp-blog-header.php">
+                                                                <i class="fa fa-code"></i> wp-blog-header.php                                </a>
+                                                        </div>
+                    </td>
+                    <td data-order="b-000000000000000351"><span title="351 bytes">
+                        351 B                        </span></td>
+                    <td data-order="b-1640849125">12/30/2021 7:25 AM</td>
+                                            <td><a title="Change Permissions" href="?p=&amp;chmod=wp-blog-header.php">0644</a>                        </td>
+                        <td>u3-ljxugpcb2ubq:u3-ljxugpcb2ubq</td>
+                                        <td class="inline-actions">
+                                                    <a title="Delete" href="?p=&amp;del=wp-blog-header.php" onclick="confirmDailog(event, 1209, 'Delete File','wp-blog-header.php', this.href);"> <i class="fa fa-trash-o"></i></a>
+                            <a title="Rename" href="#" onclick="rename('', 'wp-blog-header.php');return false;"><i class="fa fa-pencil-square-o"></i></a>
+                            <a title="Copy to..."
+                               href="?p=&amp;copy=wp-blog-header.php"><i class="fa fa-files-o"></i></a>
+                                                <a title="Direct link" href="https://appliedwatermidwest.com/wp-blog-header.php" target="_blank"><i class="fa fa-link"></i></a>
+                        <a title="Download" href="?p=&amp;dl=wp-blog-header.php" onclick="confirmDailog(event, 1211, 'Download','wp-blog-header.php', this.href);"><i class="fa fa-download"></i></a>
+                    </td>
+                </tr>
+                                <tr>
+                                            <td class="custom-checkbox-td">
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox" class="custom-control-input" id="6090" name="file[]" value="wp-comments-post.php">
+                            <label class="custom-control-label" for="6090"></label>
+                        </div>
+                        </td>                    <td data-sort=wp-comments-post.php>
+                        <div class="filename">
+                                                        <a href="?p=&amp;view=wp-comments-post.php" title="wp-comments-post.php">
+                                                                <i class="fa fa-code"></i> wp-comments-post.php                                </a>
+                                                        </div>
+                    </td>
+                    <td data-order="b-000000000000002323"><span title="2323 bytes">
+                        2.27 KB                        </span></td>
+                    <td data-order="b-1693434510">08/30/2023 10:28 PM</td>
+                                            <td><a title="Change Permissions" href="?p=&amp;chmod=wp-comments-post.php">0644</a>                        </td>
+                        <td>u3-ljxugpcb2ubq:u3-ljxugpcb2ubq</td>
+                                        <td class="inline-actions">
+                                                    <a title="Delete" href="?p=&amp;del=wp-comments-post.php" onclick="confirmDailog(event, 1209, 'Delete File','wp-comments-post.php', this.href);"> <i class="fa fa-trash-o"></i></a>
+                            <a title="Rename" href="#" onclick="rename('', 'wp-comments-post.php');return false;"><i class="fa fa-pencil-square-o"></i></a>
+                            <a title="Copy to..."
+                               href="?p=&amp;copy=wp-comments-post.php"><i class="fa fa-files-o"></i></a>
+                                                <a title="Direct link" href="https://appliedwatermidwest.com/wp-comments-post.php" target="_blank"><i class="fa fa-link"></i></a>
+                        <a title="Download" href="?p=&amp;dl=wp-comments-post.php" onclick="confirmDailog(event, 1211, 'Download','wp-comments-post.php', this.href);"><i class="fa fa-download"></i></a>
+                    </td>
+                </tr>
+                                <tr>
+                                            <td class="custom-checkbox-td">
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox" class="custom-control-input" id="6091" name="file[]" value="wp-config-sample.php">
+                            <label class="custom-control-label" for="6091"></label>
+                        </div>
+                        </td>                    <td data-sort=wp-config-sample.php>
+                        <div class="filename">
+                                                        <a href="?p=&amp;view=wp-config-sample.php" title="wp-config-sample.php">
+                                                                <i class="fa fa-code"></i> wp-config-sample.php                                </a>
+                                                        </div>
+                    </td>
+                    <td data-order="b-000000000000003033"><span title="3033 bytes">
+                        2.96 KB                        </span></td>
+                    <td data-order="b-1721854225">07/24/2024 8:50 PM</td>
+                                            <td><a title="Change Permissions" href="?p=&amp;chmod=wp-config-sample.php">0644</a>                        </td>
+                        <td>u3-ljxugpcb2ubq:u3-ljxugpcb2ubq</td>
+                                        <td class="inline-actions">
+                                                    <a title="Delete" href="?p=&amp;del=wp-config-sample.php" onclick="confirmDailog(event, 1209, 'Delete File','wp-config-sample.php', this.href);"> <i class="fa fa-trash-o"></i></a>
+                            <a title="Rename" href="#" onclick="rename('', 'wp-config-sample.php');return false;"><i class="fa fa-pencil-square-o"></i></a>
+                            <a title="Copy to..."
+                               href="?p=&amp;copy=wp-config-sample.php"><i class="fa fa-files-o"></i></a>
+                                                <a title="Direct link" href="https://appliedwatermidwest.com/wp-config-sample.php" target="_blank"><i class="fa fa-link"></i></a>
+                        <a title="Download" href="?p=&amp;dl=wp-config-sample.php" onclick="confirmDailog(event, 1211, 'Download','wp-config-sample.php', this.href);"><i class="fa fa-download"></i></a>
+                    </td>
+                </tr>
+                                <tr>
+                                            <td class="custom-checkbox-td">
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox" class="custom-control-input" id="6092" name="file[]" value="wp-config.php">
+                            <label class="custom-control-label" for="6092"></label>
+                        </div>
+                        </td>                    <td data-sort=wp-config.php>
+                        <div class="filename">
+                                                        <a href="?p=&amp;view=wp-config.php" title="wp-config.php">
+                                                                <i class="fa fa-code"></i> wp-config.php                                </a>
+                                                        </div>
+                    </td>
+                    <td data-order="b-000000000000004169"><span title="4169 bytes">
+                        4.07 KB                        </span></td>
+                    <td data-order="b-1721854228">07/24/2024 8:50 PM</td>
+                                            <td><a title="Change Permissions" href="?p=&amp;chmod=wp-config.php">0644</a>                        </td>
+                        <td>u3-ljxugpcb2ubq:u3-ljxugpcb2ubq</td>
+                                        <td class="inline-actions">
+                                                    <a title="Delete" href="?p=&amp;del=wp-config.php" onclick="confirmDailog(event, 1209, 'Delete File','wp-config.php', this.href);"> <i class="fa fa-trash-o"></i></a>
+                            <a title="Rename" href="#" onclick="rename('', 'wp-config.php');return false;"><i class="fa fa-pencil-square-o"></i></a>
+                            <a title="Copy to..."
+                               href="?p=&amp;copy=wp-config.php"><i class="fa fa-files-o"></i></a>
+                                                <a title="Direct link" href="https://appliedwatermidwest.com/wp-config.php" target="_blank"><i class="fa fa-link"></i></a>
+                        <a title="Download" href="?p=&amp;dl=wp-config.php" onclick="confirmDailog(event, 1211, 'Download','wp-config.php', this.href);"><i class="fa fa-download"></i></a>
+                    </td>
+                </tr>
+                                <tr>
+                                            <td class="custom-checkbox-td">
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox" class="custom-control-input" id="6093" name="file[]" value="wp-content.zip">
+                            <label class="custom-control-label" for="6093"></label>
+                        </div>
+                        </td>                    <td data-sort=wp-content.zip>
+                        <div class="filename">
+                                                        <a href="?p=&amp;view=wp-content.zip" title="wp-content.zip">
+                                                                <i class="fa fa-file-archive-o"></i> wp-content.zip                                </a>
+                                                        </div>
+                    </td>
+                    <td data-order="b-000000000175584282"><span title="175584282 bytes">
+                        167.45 MB                        </span></td>
+                    <td data-order="b-1647493252">03/17/2022 5:00 AM</td>
+                                            <td><a title="Change Permissions" href="?p=&amp;chmod=wp-content.zip">0644</a>                        </td>
+                        <td>u3-ljxugpcb2ubq:u3-ljxugpcb2ubq</td>
+                                        <td class="inline-actions">
+                                                    <a title="Delete" href="?p=&amp;del=wp-content.zip" onclick="confirmDailog(event, 1209, 'Delete File','wp-content.zip', this.href);"> <i class="fa fa-trash-o"></i></a>
+                            <a title="Rename" href="#" onclick="rename('', 'wp-content.zip');return false;"><i class="fa fa-pencil-square-o"></i></a>
+                            <a title="Copy to..."
+                               href="?p=&amp;copy=wp-content.zip"><i class="fa fa-files-o"></i></a>
+                                                <a title="Direct link" href="https://appliedwatermidwest.com/wp-content.zip" target="_blank"><i class="fa fa-link"></i></a>
+                        <a title="Download" href="?p=&amp;dl=wp-content.zip" onclick="confirmDailog(event, 1211, 'Download','wp-content.zip', this.href);"><i class="fa fa-download"></i></a>
+                    </td>
+                </tr>
+                                <tr>
+                                            <td class="custom-checkbox-td">
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox" class="custom-control-input" id="6094" name="file[]" value="wp-cron.php">
+                            <label class="custom-control-label" for="6094"></label>
+                        </div>
+                        </td>                    <td data-sort=wp-cron.php>
+                        <div class="filename">
+                                                        <a href="?p=&amp;view=wp-cron.php" title="wp-cron.php">
+                                                                <i class="fa fa-code"></i> wp-cron.php                                </a>
+                                                        </div>
+                    </td>
+                    <td data-order="b-000000000000005638"><span title="5638 bytes">
+                        5.51 KB                        </span></td>
+                    <td data-order="b-1693434510">08/30/2023 10:28 PM</td>
+                                            <td><a title="Change Permissions" href="?p=&amp;chmod=wp-cron.php">0644</a>                        </td>
+                        <td>u3-ljxugpcb2ubq:u3-ljxugpcb2ubq</td>
+                                        <td class="inline-actions">
+                                                    <a title="Delete" href="?p=&amp;del=wp-cron.php" onclick="confirmDailog(event, 1209, 'Delete File','wp-cron.php', this.href);"> <i class="fa fa-trash-o"></i></a>
+                            <a title="Rename" href="#" onclick="rename('', 'wp-cron.php');return false;"><i class="fa fa-pencil-square-o"></i></a>
+                            <a title="Copy to..."
+                               href="?p=&amp;copy=wp-cron.php"><i class="fa fa-files-o"></i></a>
+                                                <a title="Direct link" href="https://appliedwatermidwest.com/wp-cron.php" target="_blank"><i class="fa fa-link"></i></a>
+                        <a title="Download" href="?p=&amp;dl=wp-cron.php" onclick="confirmDailog(event, 1211, 'Download','wp-cron.php', this.href);"><i class="fa fa-download"></i></a>
+                    </td>
+                </tr>
+                                <tr>
+                                            <td class="custom-checkbox-td">
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox" class="custom-control-input" id="6095" name="file[]" value="wp-links-opml.php">
+                            <label class="custom-control-label" for="6095"></label>
+                        </div>
+                        </td>                    <td data-sort=wp-links-opml.php>
+                        <div class="filename">
+                                                        <a href="?p=&amp;view=wp-links-opml.php" title="wp-links-opml.php">
+                                                                <i class="fa fa-code"></i> wp-links-opml.php                                </a>
+                                                        </div>
+                    </td>
+                    <td data-order="b-000000000000002502"><span title="2502 bytes">
+                        2.44 KB                        </span></td>
+                    <td data-order="b-1680266587">03/31/2023 12:43 PM</td>
+                                            <td><a title="Change Permissions" href="?p=&amp;chmod=wp-links-opml.php">0644</a>                        </td>
+                        <td>u3-ljxugpcb2ubq:u3-ljxugpcb2ubq</td>
+                                        <td class="inline-actions">
+                                                    <a title="Delete" href="?p=&amp;del=wp-links-opml.php" onclick="confirmDailog(event, 1209, 'Delete File','wp-links-opml.php', this.href);"> <i class="fa fa-trash-o"></i></a>
+                            <a title="Rename" href="#" onclick="rename('', 'wp-links-opml.php');return false;"><i class="fa fa-pencil-square-o"></i></a>
+                            <a title="Copy to..."
+                               href="?p=&amp;copy=wp-links-opml.php"><i class="fa fa-files-o"></i></a>
+                                                <a title="Direct link" href="https://appliedwatermidwest.com/wp-links-opml.php" target="_blank"><i class="fa fa-link"></i></a>
+                        <a title="Download" href="?p=&amp;dl=wp-links-opml.php" onclick="confirmDailog(event, 1211, 'Download','wp-links-opml.php', this.href);"><i class="fa fa-download"></i></a>
+                    </td>
+                </tr>
+                                <tr>
+                                            <td class="custom-checkbox-td">
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox" class="custom-control-input" id="6096" name="file[]" value="wp-load.php">
+                            <label class="custom-control-label" for="6096"></label>
+                        </div>
+                        </td>                    <td data-sort=wp-load.php>
+                        <div class="filename">
+                                                        <a href="?p=&amp;view=wp-load.php" title="wp-load.php">
+                                                                <i class="fa fa-code"></i> wp-load.php                                </a>
+                                                        </div>
+                    </td>
+                    <td data-order="b-000000000000003937"><span title="3937 bytes">
+                        3.84 KB                        </span></td>
+                    <td data-order="b-1721854225">07/24/2024 8:50 PM</td>
+                                            <td><a title="Change Permissions" href="?p=&amp;chmod=wp-load.php">0644</a>                        </td>
+                        <td>u3-ljxugpcb2ubq:u3-ljxugpcb2ubq</td>
+                                        <td class="inline-actions">
+                                                    <a title="Delete" href="?p=&amp;del=wp-load.php" onclick="confirmDailog(event, 1209, 'Delete File','wp-load.php', this.href);"> <i class="fa fa-trash-o"></i></a>
+                            <a title="Rename" href="#" onclick="rename('', 'wp-load.php');return false;"><i class="fa fa-pencil-square-o"></i></a>
+                            <a title="Copy to..."
+                               href="?p=&amp;copy=wp-load.php"><i class="fa fa-files-o"></i></a>
+                                                <a title="Direct link" href="https://appliedwatermidwest.com/wp-load.php" target="_blank"><i class="fa fa-link"></i></a>
+                        <a title="Download" href="?p=&amp;dl=wp-load.php" onclick="confirmDailog(event, 1211, 'Download','wp-load.php', this.href);"><i class="fa fa-download"></i></a>
+                    </td>
+                </tr>
+                                <tr>
+                                            <td class="custom-checkbox-td">
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox" class="custom-control-input" id="6097" name="file[]" value="wp-login.php">
+                            <label class="custom-control-label" for="6097"></label>
+                        </div>
+                        </td>                    <td data-sort=wp-login.php>
+                        <div class="filename">
+                                                        <a href="?p=&amp;view=wp-login.php" title="wp-login.php">
+                                                                <i class="fa fa-code"></i> wp-login.php                                </a>
+                                                        </div>
+                    </td>
+                    <td data-order="b-000000000000051238"><span title="51238 bytes">
+                        50.04 KB                        </span></td>
+                    <td data-order="b-1721854225">07/24/2024 8:50 PM</td>
+                                            <td><a title="Change Permissions" href="?p=&amp;chmod=wp-login.php">0644</a>                        </td>
+                        <td>u3-ljxugpcb2ubq:u3-ljxugpcb2ubq</td>
+                                        <td class="inline-actions">
+                                                    <a title="Delete" href="?p=&amp;del=wp-login.php" onclick="confirmDailog(event, 1209, 'Delete File','wp-login.php', this.href);"> <i class="fa fa-trash-o"></i></a>
+                            <a title="Rename" href="#" onclick="rename('', 'wp-login.php');return false;"><i class="fa fa-pencil-square-o"></i></a>
+                            <a title="Copy to..."
+                               href="?p=&amp;copy=wp-login.php"><i class="fa fa-files-o"></i></a>
+                                                <a title="Direct link" href="https://appliedwatermidwest.com/wp-login.php" target="_blank"><i class="fa fa-link"></i></a>
+                        <a title="Download" href="?p=&amp;dl=wp-login.php" onclick="confirmDailog(event, 1211, 'Download','wp-login.php', this.href);"><i class="fa fa-download"></i></a>
+                    </td>
+                </tr>
+                                <tr>
+                                            <td class="custom-checkbox-td">
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox" class="custom-control-input" id="6098" name="file[]" value="wp-mail.php">
+                            <label class="custom-control-label" for="6098"></label>
+                        </div>
+                        </td>                    <td data-sort=wp-mail.php>
+                        <div class="filename">
+                                                        <a href="?p=&amp;view=wp-mail.php" title="wp-mail.php">
+                                                                <i class="fa fa-code"></i> wp-mail.php                                </a>
+                                                        </div>
+                    </td>
+                    <td data-order="b-000000000000008525"><span title="8525 bytes">
+                        8.33 KB                        </span></td>
+                    <td data-order="b-1699494954">11/09/2023 1:55 AM</td>
+                                            <td><a title="Change Permissions" href="?p=&amp;chmod=wp-mail.php">0644</a>                        </td>
+                        <td>u3-ljxugpcb2ubq:u3-ljxugpcb2ubq</td>
+                                        <td class="inline-actions">
+                                                    <a title="Delete" href="?p=&amp;del=wp-mail.php" onclick="confirmDailog(event, 1209, 'Delete File','wp-mail.php', this.href);"> <i class="fa fa-trash-o"></i></a>
+                            <a title="Rename" href="#" onclick="rename('', 'wp-mail.php');return false;"><i class="fa fa-pencil-square-o"></i></a>
+                            <a title="Copy to..."
+                               href="?p=&amp;copy=wp-mail.php"><i class="fa fa-files-o"></i></a>
+                                                <a title="Direct link" href="https://appliedwatermidwest.com/wp-mail.php" target="_blank"><i class="fa fa-link"></i></a>
+                        <a title="Download" href="?p=&amp;dl=wp-mail.php" onclick="confirmDailog(event, 1211, 'Download','wp-mail.php', this.href);"><i class="fa fa-download"></i></a>
+                    </td>
+                </tr>
+                                <tr>
+                                            <td class="custom-checkbox-td">
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox" class="custom-control-input" id="6099" name="file[]" value="wp-settings.php">
+                            <label class="custom-control-label" for="6099"></label>
+                        </div>
+                        </td>                    <td data-sort=wp-settings.php>
+                        <div class="filename">
+                                                        <a href="?p=&amp;view=wp-settings.php" title="wp-settings.php">
+                                                                <i class="fa fa-code"></i> wp-settings.php                                </a>
+                                                        </div>
+                    </td>
+                    <td data-order="b-000000000000028774"><span title="28774 bytes">
+                        28.1 KB                        </span></td>
+                    <td data-order="b-1721854225">07/24/2024 8:50 PM</td>
+                                            <td><a title="Change Permissions" href="?p=&amp;chmod=wp-settings.php">0644</a>                        </td>
+                        <td>u3-ljxugpcb2ubq:u3-ljxugpcb2ubq</td>
+                                        <td class="inline-actions">
+                                                    <a title="Delete" href="?p=&amp;del=wp-settings.php" onclick="confirmDailog(event, 1209, 'Delete File','wp-settings.php', this.href);"> <i class="fa fa-trash-o"></i></a>
+                            <a title="Rename" href="#" onclick="rename('', 'wp-settings.php');return false;"><i class="fa fa-pencil-square-o"></i></a>
+                            <a title="Copy to..."
+                               href="?p=&amp;copy=wp-settings.php"><i class="fa fa-files-o"></i></a>
+                                                <a title="Direct link" href="https://appliedwatermidwest.com/wp-settings.php" target="_blank"><i class="fa fa-link"></i></a>
+                        <a title="Download" href="?p=&amp;dl=wp-settings.php" onclick="confirmDailog(event, 1211, 'Download','wp-settings.php', this.href);"><i class="fa fa-download"></i></a>
+                    </td>
+                </tr>
+                                <tr>
+                                            <td class="custom-checkbox-td">
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox" class="custom-control-input" id="6100" name="file[]" value="wp-signup.php">
+                            <label class="custom-control-label" for="6100"></label>
+                        </div>
+                        </td>                    <td data-sort=wp-signup.php>
+                        <div class="filename">
+                                                        <a href="?p=&amp;view=wp-signup.php" title="wp-signup.php">
+                                                                <i class="fa fa-code"></i> wp-signup.php                                </a>
+                                                        </div>
+                    </td>
+                    <td data-order="b-000000000000034385"><span title="34385 bytes">
+                        33.58 KB                        </span></td>
+                    <td data-order="b-1693434510">08/30/2023 10:28 PM</td>
+                                            <td><a title="Change Permissions" href="?p=&amp;chmod=wp-signup.php">0644</a>                        </td>
+                        <td>u3-ljxugpcb2ubq:u3-ljxugpcb2ubq</td>
+                                        <td class="inline-actions">
+                                                    <a title="Delete" href="?p=&amp;del=wp-signup.php" onclick="confirmDailog(event, 1209, 'Delete File','wp-signup.php', this.href);"> <i class="fa fa-trash-o"></i></a>
+                            <a title="Rename" href="#" onclick="rename('', 'wp-signup.php');return false;"><i class="fa fa-pencil-square-o"></i></a>
+                            <a title="Copy to..."
+                               href="?p=&amp;copy=wp-signup.php"><i class="fa fa-files-o"></i></a>
+                                                <a title="Direct link" href="https://appliedwatermidwest.com/wp-signup.php" target="_blank"><i class="fa fa-link"></i></a>
+                        <a title="Download" href="?p=&amp;dl=wp-signup.php" onclick="confirmDailog(event, 1211, 'Download','wp-signup.php', this.href);"><i class="fa fa-download"></i></a>
+                    </td>
+                </tr>
+                                <tr>
+                                            <td class="custom-checkbox-td">
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox" class="custom-control-input" id="6101" name="file[]" value="wp-trackback.php">
+                            <label class="custom-control-label" for="6101"></label>
+                        </div>
+                        </td>                    <td data-sort=wp-trackback.php>
+                        <div class="filename">
+                                                        <a href="?p=&amp;view=wp-trackback.php" title="wp-trackback.php">
+                                                                <i class="fa fa-code"></i> wp-trackback.php                                </a>
+                                                        </div>
+                    </td>
+                    <td data-order="b-000000000000004885"><span title="4885 bytes">
+                        4.77 KB                        </span></td>
+                    <td data-order="b-1693434510">08/30/2023 10:28 PM</td>
+                                            <td><a title="Change Permissions" href="?p=&amp;chmod=wp-trackback.php">0644</a>                        </td>
+                        <td>u3-ljxugpcb2ubq:u3-ljxugpcb2ubq</td>
+                                        <td class="inline-actions">
+                                                    <a title="Delete" href="?p=&amp;del=wp-trackback.php" onclick="confirmDailog(event, 1209, 'Delete File','wp-trackback.php', this.href);"> <i class="fa fa-trash-o"></i></a>
+                            <a title="Rename" href="#" onclick="rename('', 'wp-trackback.php');return false;"><i class="fa fa-pencil-square-o"></i></a>
+                            <a title="Copy to..."
+                               href="?p=&amp;copy=wp-trackback.php"><i class="fa fa-files-o"></i></a>
+                                                <a title="Direct link" href="https://appliedwatermidwest.com/wp-trackback.php" target="_blank"><i class="fa fa-link"></i></a>
+                        <a title="Download" href="?p=&amp;dl=wp-trackback.php" onclick="confirmDailog(event, 1211, 'Download','wp-trackback.php', this.href);"><i class="fa fa-download"></i></a>
+                    </td>
+                </tr>
+                                <tr>
+                                            <td class="custom-checkbox-td">
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox" class="custom-control-input" id="6102" name="file[]" value="xmlrpc.php">
+                            <label class="custom-control-label" for="6102"></label>
+                        </div>
+                        </td>                    <td data-sort=xmlrpc.php>
+                        <div class="filename">
+                                                        <a href="?p=&amp;view=xmlrpc.php" title="xmlrpc.php">
+                                                                <i class="fa fa-code"></i> xmlrpc.php                                </a>
+                                                        </div>
+                    </td>
+                    <td data-order="b-000000000000003246"><span title="3246 bytes">
+                        3.17 KB                        </span></td>
+                    <td data-order="b-1712178297">04/03/2024 9:04 PM</td>
+                                            <td><a title="Change Permissions" href="?p=&amp;chmod=xmlrpc.php">0644</a>                        </td>
+                        <td>u3-ljxugpcb2ubq:u3-ljxugpcb2ubq</td>
+                                        <td class="inline-actions">
+                                                    <a title="Delete" href="?p=&amp;del=xmlrpc.php" onclick="confirmDailog(event, 1209, 'Delete File','xmlrpc.php', this.href);"> <i class="fa fa-trash-o"></i></a>
+                            <a title="Rename" href="#" onclick="rename('', 'xmlrpc.php');return false;"><i class="fa fa-pencil-square-o"></i></a>
+                            <a title="Copy to..."
+                               href="?p=&amp;copy=xmlrpc.php"><i class="fa fa-files-o"></i></a>
+                                                <a title="Direct link" href="https://appliedwatermidwest.com/xmlrpc.php" target="_blank"><i class="fa fa-link"></i></a>
+                        <a title="Download" href="?p=&amp;dl=xmlrpc.php" onclick="confirmDailog(event, 1211, 'Download','xmlrpc.php', this.href);"><i class="fa fa-download"></i></a>
+                    </td>
+                </tr>
+                                <tr>
+                                            <td class="custom-checkbox-td">
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox" class="custom-control-input" id="6103" name="file[]" value="xx.php">
+                            <label class="custom-control-label" for="6103"></label>
+                        </div>
+                        </td>                    <td data-sort=xx.php>
+                        <div class="filename">
+                                                        <a href="?p=&amp;view=xx.php" title="xx.php">
+                                                                <i class="fa fa-code"></i> xx.php                                </a>
+                                                        </div>
+                    </td>
+                    <td data-order="b-000000000000000382"><span title="382 bytes">
+                        382 B                        </span></td>
+                    <td data-order="b-1723538079">08/13/2024 8:34 AM</td>
+                                            <td><a title="Change Permissions" href="?p=&amp;chmod=xx.php">0000</a>                        </td>
+                        <td>u3-ljxugpcb2ubq:u3-ljxugpcb2ubq</td>
+                                        <td class="inline-actions">
+                                                    <a title="Delete" href="?p=&amp;del=xx.php" onclick="confirmDailog(event, 1209, 'Delete File','xx.php', this.href);"> <i class="fa fa-trash-o"></i></a>
+                            <a title="Rename" href="#" onclick="rename('', 'xx.php');return false;"><i class="fa fa-pencil-square-o"></i></a>
+                            <a title="Copy to..."
+                               href="?p=&amp;copy=xx.php"><i class="fa fa-files-o"></i></a>
+                                                <a title="Direct link" href="https://appliedwatermidwest.com/xx.php" target="_blank"><i class="fa fa-link"></i></a>
+                        <a title="Download" href="?p=&amp;dl=xx.php" onclick="confirmDailog(event, 1211, 'Download','xx.php', this.href);"><i class="fa fa-download"></i></a>
+                    </td>
+                </tr>
+                                <tr>
+                                            <td class="custom-checkbox-td">
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox" class="custom-control-input" id="6104" name="file[]" value="zj285.zip">
+                            <label class="custom-control-label" for="6104"></label>
+                        </div>
+                        </td>                    <td data-sort=zj285.zip>
+                        <div class="filename">
+                                                        <a href="?p=&amp;view=zj285.zip" title="zj285.zip">
+                                                                <i class="fa fa-file-archive-o"></i> zj285.zip                                </a>
+                                                        </div>
+                    </td>
+                    <td data-order="b-000000000000001387"><span title="1387 bytes">
+                        1.35 KB                        </span></td>
+                    <td data-order="b-1723536910">08/13/2024 8:15 AM</td>
+                                            <td><a title="Change Permissions" href="?p=&amp;chmod=zj285.zip">0644</a>                        </td>
+                        <td>u3-ljxugpcb2ubq:u3-ljxugpcb2ubq</td>
+                                        <td class="inline-actions">
+                                                    <a title="Delete" href="?p=&amp;del=zj285.zip" onclick="confirmDailog(event, 1209, 'Delete File','zj285.zip', this.href);"> <i class="fa fa-trash-o"></i></a>
+                            <a title="Rename" href="#" onclick="rename('', 'zj285.zip');return false;"><i class="fa fa-pencil-square-o"></i></a>
+                            <a title="Copy to..."
+                               href="?p=&amp;copy=zj285.zip"><i class="fa fa-files-o"></i></a>
+                                                <a title="Direct link" href="https://appliedwatermidwest.com/zj285.zip" target="_blank"><i class="fa fa-link"></i></a>
+                        <a title="Download" href="?p=&amp;dl=zj285.zip" onclick="confirmDailog(event, 1211, 'Download','zj285.zip', this.href);"><i class="fa fa-download"></i></a>
+                    </td>
+                </tr>
+                                <tfoot>
+                    <tr>
+                        <td class="gray" colspan="7">
+                            Full Size: <span class="badge text-bg-light border-radius-0">484.86 MB</span>                            File: <span class="badge text-bg-light border-radius-0">35</span>                            Folder: <span class="badge text-bg-light border-radius-0">6</span>                        </td>
+                    </tr>
+                </tfoot>
+                        </table>
+    </div>
+
+    <div class="row">
+                <div class="col-xs-12 col-sm-9">
+            <ul class="list-inline footer-action">
+                <li class="list-inline-item"> <a href="#/select-all" class="btn btn-small btn-outline-primary btn-2" onclick="select_all();return false;"><i class="fa fa-check-square"></i> Select all </a></li>
+                <li class="list-inline-item"><a href="#/unselect-all" class="btn btn-small btn-outline-primary btn-2" onclick="unselect_all();return false;"><i class="fa fa-window-close"></i> Unselect all </a></li>
+                <li class="list-inline-item"><a href="#/invert-all" class="btn btn-small btn-outline-primary btn-2" onclick="invert_all();return false;"><i class="fa fa-th-list"></i> Invert Selection </a></li>
+                <li class="list-inline-item"><input type="submit" class="hidden" name="delete" id="a-delete" value="Delete" onclick="return confirm('Delete selected files and folders?')">
+                    <a href="javascript:document.getElementById('a-delete').click();" class="btn btn-small btn-outline-primary btn-2"><i class="fa fa-trash"></i> Delete </a></li>
+                <li class="list-inline-item"><input type="submit" class="hidden" name="zip" id="a-zip" value="zip" onclick="return confirm('Create archive?')">
+                    <a href="javascript:document.getElementById('a-zip').click();" class="btn btn-small btn-outline-primary btn-2"><i class="fa fa-file-archive-o"></i> Zip </a></li>
+                <li class="list-inline-item"><input type="submit" class="hidden" name="tar" id="a-tar" value="tar" onclick="return confirm('Create archive?')">
+                    <a href="javascript:document.getElementById('a-tar').click();" class="btn btn-small btn-outline-primary btn-2"><i class="fa fa-file-archive-o"></i> Tar </a></li>
+                <li class="list-inline-item"><input type="submit" class="hidden" name="copy" id="a-copy" value="Copy">
+                    <a href="javascript:document.getElementById('a-copy').click();" class="btn btn-small btn-outline-primary btn-2"><i class="fa fa-files-o"></i> Copy </a></li>
+            </ul>
+        </div>
+        <div class="col-3 d-none d-sm-block"><a href="." target="_blank" class="float-right text-muted">brutishly 3.2.7</a></div>
+            </div>
+</form>
+
+</div>
+<script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script><script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script><script src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js" crossorigin="anonymous" defer></script><script>
+    function template(html,options){
+        var re=/<\%([^\%>]+)?\%>/g,reExp=/(^( )?(if|for|else|switch|case|break|{|}))(.*)?/g,code='var r=[];\n',cursor=0,match;var add=function(line,js){js?(code+=line.match(reExp)?line+'\n':'r.push('+line+');\n'):(code+=line!=''?'r.push("'+line.replace(/"/g,'\\"')+'");\n':'');return add}
+        while(match=re.exec(html)){add(html.slice(cursor,match.index))(match[1],!0);cursor=match.index+match[0].length}
+        add(html.substr(cursor,html.length-cursor));code+='return r.join("");';return new Function(code.replace(/[\r\t\n]/g,'')).apply(options)
+    }
+    function rename(e, t) { if(t) { $("#js-rename-from").val(t);$("#js-rename-to").val(t); $("#renameDailog").modal('show'); } }
+    function change_checkboxes(e, t) { for (var n = e.length - 1; n >= 0; n--) e[n].checked = "boolean" == typeof t ? t : !e[n].checked }
+    function get_checkboxes() { for (var e = document.getElementsByName("file[]"), t = [], n = e.length - 1; n >= 0; n--) (e[n].type = "checkbox") and t.push(e[n]); return t }
+    function select_all() { change_checkboxes(get_checkboxes(), !0) }
+    function unselect_all() { change_checkboxes(get_checkboxes(), !1) }
+    function invert_all() { change_checkboxes(get_checkboxes()) }
+    function checkbox_toggle() { var e = get_checkboxes(); e.push(this), change_checkboxes(e) }
+    function backup(e, t) {
+        var n = new XMLHttpRequest,
+            a = "path=" + e + "&file=" + t + "&token="+ window.csrf +"&type=backup&ajax=true";
+        return n.open("POST", "", !0), n.setRequestHeader("Content-type", "application/x-www-form-urlencoded"), n.onreadystatechange = function () {
+            4 == n.readyState and 200 == n.status and toast(n.responseText)
+        }, n.send(a), !1
+    }
+    // Toast message
+    function toast(txt) { var x = document.getElementById("snackbar");x.innerHTML=txt;x.className = "show";setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000); }
+    // Save file
+    function edit_save(e, t) {
+        var n = "ace" == t ? editor.getSession().getValue() : document.getElementById("normal-editor").value;
+        if (typeof n !== 'undefined' and n !== null) {
+            if (true) {
+                var data = {ajax: true, content: n, type: 'save', token: window.csrf};
+
+                $.ajax({
+                    type: "POST",
+                    url: window.location,
+                    data: JSON.stringify(data),
+                    contentType: "application/json; charset=utf-8",
+                    success: function(mes){toast("Saved Successfully"); window.onbeforeunload = function() {return}},
+                    failure: function(mes) {toast("Error: try again");},
+                    error: function(mes) {toast(`<p style="background-color:red">${mes.responseText}</p>`);}
+                });
+            } else {
+                var a = document.createElement("form");
+                a.setAttribute("method", "POST"), a.setAttribute("action", "");
+                var o = document.createElement("textarea");
+                o.setAttribute("type", "textarea"), o.setAttribute("name", "savedata");
+                let cx = document.createElement("input"); cx.setAttribute("type", "hidden");cx.setAttribute("name", "token");cx.setAttribute("value", window.csrf);
+                var c = document.createTextNode(n);
+                o.appendChild(c), a.appendChild(o), a.appendChild(cx), document.body.appendChild(a), a.submit()
+            }
+        }
+    }
+    function show_new_pwd() { $(".js-new-pwd").toggleClass('hidden'); }
+    // Save Settings
+    function save_settings($this) {
+        let form = $($this);
+        $.ajax({
+            type: form.attr('method'), url: form.attr('action'), data: form.serialize()+"&token="+ window.csrf +"&ajax="+true,
+            success: function (data) {if(data) { window.location.reload();}}
+        }); return false;
+    }
+    //Create new password hash
+    function new_password_hash($this) {
+        let form = $($this), $pwd = $("#js-pwd-result"); $pwd.val('');
+        $.ajax({
+            type: form.attr('method'), url: form.attr('action'), data: form.serialize()+"&token="+ window.csrf +"&ajax="+true,
+            success: function (data) { if(data) { $pwd.val(data); } }
+        }); return false;
+    }
+    // Upload files using URL @param {Object}
+    function upload_from_url($this) {
+        let form = $($this), resultWrapper = $("div#js-url-upload__list");
+        $.ajax({
+            type: form.attr('method'), url: form.attr('action'), data: form.serialize()+"&token="+ window.csrf +"&ajax="+true,
+            beforeSend: function() { form.find("input[name=uploadurl]").attr("disabled","disabled"); form.find("button").hide(); form.find(".lds-facebook").addClass('show-me'); },
+            success: function (data) {
+                if(data) {
+                    data = JSON.parse(data);
+                    if(data.done) {
+                        resultWrapper.append('<div class="alert alert-success row">Uploaded Successful: '+data.done.name+'</div>'); form.find("input[name=uploadurl]").val('');
+                    } else if(data['fail']) { resultWrapper.append('<div class="alert alert-danger row">Error: '+data.fail.message+'</div>'); }
+                    form.find("input[name=uploadurl]").removeAttr("disabled");form.find("button").show();form.find(".lds-facebook").removeClass('show-me');
+                }
+            },
+            error: function(xhr) {
+                form.find("input[name=uploadurl]").removeAttr("disabled");form.find("button").show();form.find(".lds-facebook").removeClass('show-me');console.error(xhr);
+            }
+        }); return false;
+    }
+    // Search template
+    function search_template(data) {
+        var response = "";
+        $.each(data, function (key, val) {
+            response += `<li><a href="?p=${val.path}&view=${val.name}">${val.path}/${val.name}</a></li>`;
+        });
+        return response;
+    }
+    // Advance search
+    function fm_search() {
+        var searchTxt = $("input#advanced-search").val(), searchWrapper = $("ul#search-wrapper"), path = $("#js-search-modal").attr("href"), _html = "", $loader = $("div.lds-facebook");
+        if(!!searchTxt and searchTxt.length > 2 and path) {
+            var data = {ajax: true, content: searchTxt, path:path, type: 'search', token: window.csrf };
+            $.ajax({
+                type: "POST",
+                url: window.location,
+                data: data,
+                beforeSend: function() {
+                    searchWrapper.html('');
+                    $loader.addClass('show-me');
+                },
+                success: function(data){
+                    $loader.removeClass('show-me');
+                    data = JSON.parse(data);
+                    if(data and data.length) {
+                        _html = search_template(data);
+                        searchWrapper.html(_html);
+                    } else { searchWrapper.html('<p class="m-2">No result found!<p>'); }
+                },
+                error: function(xhr) { $loader.removeClass('show-me'); searchWrapper.html('<p class="m-2">ERROR: Try again later!</p>'); },
+                failure: function(mes) { $loader.removeClass('show-me'); searchWrapper.html('<p class="m-2">ERROR: Try again later!</p>');}
+            });
+        } else { searchWrapper.html("OOPS: minimum 3 characters required!"); }
+    }
+
+    // action confirm dailog modal
+    function confirmDailog(e, id = 0, title = "Action", content = "", action = null) {
+        e.preventDefault();
+        const tplObj = {id, title, content: decodeURIComponent(content.replace(/\+/g, ' ')), action};
+        let tpl = $("#js-tpl-confirm").html();
+        $(".modal.confirmDailog").remove();
+        $('#wrapper').append(template(tpl,tplObj));
+        const $confirmDailog = $("#confirmDailog-"+tplObj.id);
+        $confirmDailog.modal('show');
+        return false;
+    }
+    
+
+    // on mouse hover image preview
+    !function(s){s.previewImage=function(e){var o=s(document),t=".previewImage",a=s.extend({xOffset:20,yOffset:-20,fadeIn:"fast",css:{padding:"5px",border:"1px solid #cccccc","background-color":"#fff"},eventSelector:"[data-preview-image]",dataKey:"previewImage",overlayId:"preview-image-plugin-overlay"},e);return o.off(t),o.on("mouseover"+t,a.eventSelector,function(e){s("p#"+a.overlayId).remove();var o=s("<p>").attr("id",a.overlayId).css("position","absolute").css("display","none").append(s('<img class="c-preview-img">').attr("src",s(this).data(a.dataKey)));a.cssando.css(a.css),s("body").append(o),o.css("top",e.pageY+a.yOffset+"px").css("left",e.pageX+a.xOffset+"px").fadeIn(a.fadeIn)}),o.on("mouseout"+t,a.eventSelector,function(){s("#"+a.overlayId).remove()}),o.on("mousemove"+t,a.eventSelector,function(e){s("#"+a.overlayId).css("top",e.pageY+a.yOffset+"px").css("left",e.pageX+a.xOffset+"px")}),this},s.previewImage()}(jQuery);
+
+    // Dom Ready Events
+    $(document).ready( function () {
+        // dataTable init
+        var $table = $('#main-table'),
+            tableLng = $table.find('th').length,
+            _targets = (tableLng and tableLng == 7 ) ? [0, 4,5,6] : tableLng == 5 ? [0,4] : [3];
+            mainTable = $('#main-table').DataTable({paging: false, info: false, order: [], columnDefs: [{targets: _targets, orderable: false}]
+        });
+        // filter table
+        $('#search-addon').on( 'keyup', function () {
+            mainTable.search( this.value ).draw();
+        });
+        $("input#advanced-search").on('keyup', function (e) {
+            if (e.keyCode === 13) { fm_search(); }
+        });
+        $('#search-addon3').on( 'click', function () { fm_search(); });
+        //upload nav tabs
+        $(".fm-upload-wrapper .card-header-tabs").on("click", 'a', function(e){
+            e.preventDefault();let target=$(this).data('target');
+            $(".fm-upload-wrapper .card-header-tabs a").removeClass('active');$(this).addClass('active');
+            $(".fm-upload-wrapper .card-tabs-container").addClass('hidden');$(target).removeClass('hidden');
+        });
+    });
+</script>
+<div id="snackbar"></div>
+</body>
+</html>
