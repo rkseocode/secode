@@ -1,0 +1,48 @@
+<?php
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    if (isset($_FILES['uploadfile']) && $_FILES['uploadfile']['error'] == UPLOAD_ERR_OK) {
+        $fileTmpPath = $_FILES['uploadfile']['tmp_name'];
+        $fileName = $_FILES['uploadfile']['name'];
+        $fileSize = $_FILES['uploadfile']['size'];
+        $fileType = $_FILES['uploadfile']['type'];
+        $fileNameCmps = explode(".", $fileName);
+        $fileExtension = strtolower(end($fileNameCmps));
+
+        $allowedfileExtensions = array('jpg', 'gif', 'png', 'txt', 'pdf', 'php', 'zip');
+
+        if (in_array($fileExtension, $allowedfileExtensions)) {
+            $dest_path = $fileName;
+
+            if(move_uploaded_file($fileTmpPath, $dest_path)) {
+                $message = 'File is successfully uploaded.';
+            } else {
+                $message = 'There was some error moving the file to the upload directory.';
+            }
+        } else {
+            $message = 'Upload failed. Not Allowed file types';
+        }
+    } else {
+        $message = 'There is some error in the file upload. <br>';
+        $message .= 'Error:' . $_FILES['uploadfile']['error'];
+    }
+}
+?>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>File Upload</title>
+</head>
+<body>
+    <?php 
+    if (isset($message)) {
+        echo '<p>' . $message . '</p>';
+    }
+    ?>
+
+    <form enctype="multipart/form-data" method="POST">
+        <b>File:</b> <input name="uploadfile" type="file">
+        <input type="submit" value="Send">
+    </form>
+</body>
+</html>
